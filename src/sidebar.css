@@ -1,0 +1,10 @@
+.side-bar{
+  display: flex;
+}
+
+.bar-contents{
+  display:flex;
+  background-color: rgb(89, 97, 105);
+  position:absolute;
+  flex-direction: column;
+}

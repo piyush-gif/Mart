@@ -11,6 +11,9 @@ const HomePage = () => {
             <h3 >{product.id}</h3>
             <p>{product.name}</p>
             <p>{product.price}</p>
+            <p>{product.category}</p>
+            <p>{product.description}</p>
+            <p>{product.expirationDate}</p>
             <hr/>
           </div>
           ))}

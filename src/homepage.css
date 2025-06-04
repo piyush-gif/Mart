@@ -14,7 +14,10 @@
   flex-direction: column;
   background-color: beige;
   border: 1px solid black;
-  padding:15px;
+  padding:10px;
   width:200px;
   align-items: center;
+}
+.products h3{
+  display:block;
 }

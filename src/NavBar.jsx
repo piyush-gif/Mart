@@ -1,7 +1,8 @@
-const NavBar = () => {
+const NavBar = ({toggleSideBar}) => {
+
   return ( 
     <div className="nav-container">
-      this is the nav bar
+      <button onClick={toggleSideBar}>MART</button>
       <div className="nav-objects">
         <input></input>
         <button>cart</button>

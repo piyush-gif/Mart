@@ -1,0 +1,11 @@
+.nav-container{
+  display:flex;
+  padding:15px;
+  background-color: rgb(89, 97, 105);
+  
+}
+.nav-objects{
+  display:flex;
+  margin-left: auto;
+  gap: 10px; 
+}
