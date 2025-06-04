@@ -1,5 +1,6 @@
 .side-bar{
   display: flex;
+ 
 }
 
 .bar-contents{
@@ -7,4 +8,11 @@
   background-color: rgb(89, 97, 105);
   position:absolute;
   flex-direction: column;
+  width:150px;
+  height:1000px;
+}
+
+.bar-button{
+  
+
 }

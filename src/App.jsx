@@ -6,7 +6,7 @@ import SideBar from './SideBar.jsx';
 
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
-
+  
 
   const toggleSideBar = () => {
     setShowSideBar(prev => !prev);
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <NavBar toggleSideBar={toggleSideBar}/>
+      <NavBar toggleSideBar={toggleSideBar} />
       {showSideBar && <SideBar/>}
       <HomePage/>
     </>
