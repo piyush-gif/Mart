@@ -3,7 +3,7 @@ const accountPage = () => {
 
     <div>
       <div>
-        this is account
+        <h1>account</h1>
       </div>
     </div>
    );

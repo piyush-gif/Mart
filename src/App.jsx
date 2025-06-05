@@ -8,7 +8,10 @@ import Level2 from './pages/Level2.jsx'
 import Level3 from './pages/Level3.jsx'
 import Level4 from './pages/Level4.jsx'
 import Level5 from './pages/Level5.jsx'
-
+import Settings from './pages/Settings.jsx';
+import AccountPage from './pages/AccountPage.jsx';
+import OrdersPage from './pages/OrdersPage.jsx';
+import Cart from './pages/Cart.jsx';
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
   const toggleSideBar = () => {
@@ -26,6 +29,10 @@ function App() {
         <Route path="/level3" element ={<Level3/>}/>
         <Route path="/level4" element ={<Level4/>}/>
         <Route path="/level5" element ={<Level5/>}/>
+        <Route path="/Settings" element={<Settings/>}/>
+        <Route path="/Account" element={<AccountPage/>}/>
+        <Route path="/Orders" element={<OrdersPage/>}/>
+        <Route path='/Cart' element={<Cart/>}/>
       </Routes>
     </>
   )

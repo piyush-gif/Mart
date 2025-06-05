@@ -13,15 +13,15 @@ const NavBar = ({toggleSideBar}) => {
       <Link to='/'>Home</Link>
       <div className="nav-objects">
         <input/>
-        <button>cart</button>
+        <Link to='/Cart'>Cart</Link>
         <div className='profile-wrapper'>
           <button onClick={toggleProfile}>profile</button>
           {showProfile && 
            <div className='profile-container'>
             <div className="profile-contents">
-              <Link to='#'>Your account</Link>
-              <Link to='#'>Your orders</Link>
-              <Link to='##'>Settings</Link>
+              <Link to='/Account'>Your account</Link>
+              <Link to='/Orders'>Your orders</Link>
+              <Link to='/Settings'>Settings</Link>
               <Link to='#'>Log out</Link>
             </div>
           </div>
