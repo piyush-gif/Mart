@@ -3,7 +3,11 @@ import { Route,Routes } from 'react-router-dom';
 import NavBar from './components/NavBar.jsx'
 import HomePage from './pages/HomePage.jsx'
 import SideBar from './components/SideBar.jsx';
-import Groceries from './pages/Groceries.jsx';
+import Level1 from './pages/Level1.jsx'
+import Level2 from './pages/Level2.jsx'
+import Level3 from './pages/Level3.jsx'
+import Level4 from './pages/Level4.jsx'
+import Level5 from './pages/Level5.jsx'
 
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
@@ -17,7 +21,11 @@ function App() {
 
       <Routes>
         <Route path="/" element ={<HomePage/>} />
-        <Route path="/level1" element ={<Groceries/>} />
+        <Route path="/level1" element ={<Level1/>}/>
+        <Route path="/level2" element ={<Level2/>}/>
+        <Route path="/level3" element ={<Level3/>}/>
+        <Route path="/level4" element ={<Level4/>}/>
+        <Route path="/level5" element ={<Level5/>}/>
       </Routes>
     </>
   )

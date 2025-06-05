@@ -10,6 +10,7 @@ const NavBar = ({toggleSideBar}) => {
   return ( 
     <div className="nav-container">
       <button onClick={toggleSideBar}>MART</button>
+      <Link to='/'>Home</Link>
       <div className="nav-objects">
         <input/>
         <button>cart</button>
