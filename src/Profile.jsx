@@ -11,9 +11,6 @@ const Profile = () => {
         <Link to='#'>Log out</Link>
       </div>
     </div>
-
-
-
    );
 }
  
