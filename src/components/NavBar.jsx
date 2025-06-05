@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import Profile from './Profile';
+import { Link } from 'react-router-dom';
 
 const NavBar = ({toggleSideBar}) => {
   const [showProfile, setShowProfile] = useState(false);
@@ -15,7 +15,16 @@ const NavBar = ({toggleSideBar}) => {
         <button>cart</button>
         <div className='profile-wrapper'>
           <button onClick={toggleProfile}>profile</button>
-          {showProfile && <Profile/>}
+          {showProfile && 
+           <div className='profile-container'>
+            <div className="profile-contents">
+              <Link to='#'>Your account</Link>
+              <Link to='#'>Your orders</Link>
+              <Link to='##'>Settings</Link>
+              <Link to='#'>Log out</Link>
+            </div>
+          </div>
+          }
         </div>
       </div>
     </div>

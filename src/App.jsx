@@ -1,23 +1,24 @@
-import NavBar from './navBar.jsx'
-import HomePage from './HomePage.jsx'
-import './App.css'
 import { useState } from 'react'
-import SideBar from './SideBar.jsx';
+import { Route,Routes } from 'react-router-dom';
+import NavBar from './components/NavBar.jsx'
+import HomePage from './pages/HomePage.jsx'
+import SideBar from './components/SideBar.jsx';
+import Groceries from './pages/Groceries.jsx';
 
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
-  
-
   const toggleSideBar = () => {
     setShowSideBar(prev => !prev);
   };
-
-
   return (
     <>
       <NavBar toggleSideBar={toggleSideBar} />
       {showSideBar && <SideBar/>}
-      <HomePage/>
+
+      <Routes>
+        <Route path="/" element ={<HomePage/>} />
+        <Route path="/level1" element ={<Groceries/>} />
+      </Routes>
     </>
   )
 }

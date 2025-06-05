@@ -1,4 +1,3 @@
-
 {
   "products": [
     {
@@ -40,6 +39,206 @@
       "price": 3.50,
       "expirationDate": "2025-06-08",
       "category": "Fruit"
+    },
+    {
+      "id": "6",
+      "name": "Spoon Set",
+      "description": "Stainless steel spoons, pack of 6.",
+      "price": 5.99,
+      "expirationDate": "2026-01-01",
+      "category": "Utensils"
+    },
+    {
+      "id": "7",
+      "name": "Cutting Board",
+      "description": "Durable plastic cutting board for kitchen use.",
+      "price": 8.49,
+      "expirationDate": "2026-01-01",
+      "category": "Utensils"
+    },
+    {
+      "id": "8",
+      "name": "Frying Pan",
+      "description": "Non-stick frying pan, 12 inch.",
+      "price": 14.99,
+      "expirationDate": "2026-01-01",
+      "category": "Utensils"
+    },
+    {
+      "id": "9",
+      "name": "Kitchen Knife",
+      "description": "Sharp stainless steel chef's knife.",
+      "price": 9.99,
+      "expirationDate": "2026-01-01",
+      "category": "Utensils"
+    },
+    {
+      "id": "10",
+      "name": "Measuring Cups",
+      "description": "Plastic measuring cups set, 5 pieces.",
+      "price": 6.49,
+      "expirationDate": "2026-01-01",
+      "category": "Utensils"
+    },
+    {
+      "id": "11",
+      "name": "Action Figure",
+      "description": "Superhero action figure with movable limbs.",
+      "price": 12.99,
+      "expirationDate": "2026-01-01",
+      "category": "Toys"
+    },
+    {
+      "id": "12",
+      "name": "Puzzle Set",
+      "description": "1000-piece landscape puzzle.",
+      "price": 7.49,
+      "expirationDate": "2026-01-01",
+      "category": "Toys"
+    },
+    {
+      "id": "13",
+      "name": "Lego Bricks",
+      "description": "Creative building block set.",
+      "price": 29.99,
+      "expirationDate": "2026-01-01",
+      "category": "Toys"
+    },
+    {
+      "id": "14",
+      "name": "Stuffed Bear",
+      "description": "Soft and cuddly teddy bear.",
+      "price": 10.00,
+      "expirationDate": "2026-01-01",
+      "category": "Toys"
+    },
+    {
+      "id": "15",
+      "name": "Remote Car",
+      "description": "Rechargeable RC racing car.",
+      "price": 19.99,
+      "expirationDate": "2026-01-01",
+      "category": "Toys"
+    },
+    {
+      "id": "16",
+      "name": "Denim Jacket",
+      "description": "Stylish unisex denim jacket.",
+      "price": 45.00,
+      "expirationDate": "2026-01-01",
+      "category": "Luga Shop"
+    },
+    {
+      "id": "17",
+      "name": "T-Shirt Pack",
+      "description": "Pack of 3 cotton t-shirts.",
+      "price": 24.99,
+      "expirationDate": "2026-01-01",
+      "category": "Luga Shop"
+    },
+    {
+      "id": "18",
+      "name": "Sneakers",
+      "description": "Comfortable running sneakers.",
+      "price": 59.99,
+      "expirationDate": "2026-01-01",
+      "category": "Luga Shop"
+    },
+    {
+      "id": "19",
+      "name": "Winter Hat",
+      "description": "Woolen hat for cold weather.",
+      "price": 12.99,
+      "expirationDate": "2026-01-01",
+      "category": "Luga Shop"
+    },
+    {
+      "id": "20",
+      "name": "Cargo Pants",
+      "description": "Durable outdoor cargo pants.",
+      "price": 34.99,
+      "expirationDate": "2026-01-01",
+      "category": "Luga Shop"
+    },
+    {
+      "id": "21",
+      "name": "Smartphone",
+      "description": "Latest model with OLED display.",
+      "price": 699.00,
+      "expirationDate": "2026-01-01",
+      "category": "Electronic"
+    },
+    {
+      "id": "22",
+      "name": "Bluetooth Speaker",
+      "description": "Waterproof portable speaker.",
+      "price": 49.99,
+      "expirationDate": "2026-01-01",
+      "category": "Electronic"
+    },
+    {
+      "id": "23",
+      "name": "Laptop",
+      "description": "Lightweight laptop with 16GB RAM.",
+      "price": 899.00,
+      "expirationDate": "2026-01-01",
+      "category": "Electronic"
+    },
+    {
+      "id": "24",
+      "name": "Headphones",
+      "description": "Noise-cancelling wireless headphones.",
+      "price": 129.99,
+      "expirationDate": "2026-01-01",
+      "category": "Electronic"
+    },
+    {
+      "id": "25",
+      "name": "USB Charger",
+      "description": "Fast-charging USB adapter.",
+      "price": 14.99,
+      "expirationDate": "2026-01-01",
+      "category": "Electronic"
+    },
+    {
+      "id": "26",
+      "name": "Broom Set",
+      "description": "Broom and dustpan combo.",
+      "price": 11.99,
+      "expirationDate": "2026-01-01",
+      "category": "Household"
+    },
+    {
+      "id": "27",
+      "name": "Laundry Basket",
+      "description": "Foldable fabric laundry basket.",
+      "price": 15.99,
+      "expirationDate": "2026-01-01",
+      "category": "Household"
+    },
+    {
+      "id": "28",
+      "name": "Dish Rack",
+      "description": "Two-tier stainless steel dish rack.",
+      "price": 27.99,
+      "expirationDate": "2026-01-01",
+      "category": "Household"
+    },
+    {
+      "id": "29",
+      "name": "Mop Bucket",
+      "description": "Spin mop with bucket set.",
+      "price": 23.50,
+      "expirationDate": "2026-01-01",
+      "category": "Household"
+    },
+    {
+      "id": "30",
+      "name": "Storage Box",
+      "description": "Plastic stackable storage container.",
+      "price": 9.99,
+      "expirationDate": "2026-01-01",
+      "category": "Household"
     }
   ]
 }

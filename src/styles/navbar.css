@@ -1,3 +1,17 @@
+.nav-container{
+  display:flex;
+  padding:15px;
+  background-color: rgb(89, 97, 105);
+}
+.nav-objects{
+  display:flex;
+  margin-left: auto;
+  gap: 10px; 
+}
+
+.profile-wrapper{
+  position:relative;
+}
 .profile-container{
   display:flex;
   height: 150px;
@@ -13,7 +27,6 @@
 
 .profile-contents a{
   padding: 10px;
-  background-color: bisque;
-  
+  background-color: bisque; 
 }
 

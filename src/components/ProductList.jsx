@@ -1,7 +1,6 @@
-import useFetch from "./useFetch";
+import useFetch from "../hooks/useFetch";
 
 const ProductList = () => {
-
   const {productData, error}= useFetch()
   return (
     <div>
