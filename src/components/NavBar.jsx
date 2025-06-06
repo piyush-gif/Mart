@@ -12,10 +12,9 @@ const NavBar = ({toggleSideBar}) => {
       <button onClick={toggleSideBar}>MART</button>
       <Link to='/'>Home</Link>
       <div className="nav-objects">
-        <input/>
         <Link to='/Cart'>Cart</Link>
         <div className='profile-wrapper'>
-          <button onClick={toggleProfile}>profile</button>
+          <button onClick={toggleProfile}>Profile</button>
           {showProfile && 
            <div className='profile-container'>
             <div className="profile-contents">

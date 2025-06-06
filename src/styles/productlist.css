@@ -1,6 +1,8 @@
 .page-container{
   padding: 40px;
-  background-color: rgb(118, 98, 33);
+  background-color: rgb(185, 183, 174);
+  margin: 20px;
+  min-height: 100vh;
 }
 
 .page{
@@ -18,6 +20,9 @@
   width:200px;
   align-items: center;
 }
-.products h3{
-  display:block;
+
+.page :hover{
+  background-color: white;
+  cursor: pointer;
 }
+

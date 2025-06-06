@@ -1,8 +1,33 @@
 .nav-container{
   display:flex;
   padding:15px;
-  background-color: rgb(89, 97, 105);
+  background-color: rgb(8, 97, 38);
 }
+.nav-container button{
+  background-color: aliceblue;
+  padding:5px;
+  width: 50px;
+  text-align: center;
+  margin-right:10px;
+  margin-left:10px;
+  border-radius: 2px;
+  border:none;
+}
+.nav-container button:hover{
+  background-color:rgb(101, 85, 105) ;
+}
+
+.nav-container a{
+  text-decoration: none;
+  background-color: aliceblue;
+  padding:5px;
+  width: 50px;
+  text-align: center;
+  margin-right:10px;
+  margin-left:10px;
+  border-radius: 2px;
+}
+
 .nav-objects{
   display:flex;
   margin-left: auto;
@@ -19,6 +44,16 @@
   top: 100%; 
   right: 0;
 }
+
+.profile-wrapper button{
+  padding:8px;
+  width:60px;
+  text-align: center;
+}
+
+.profile-wrapper button :hover{
+  background-color:rgb(8, 97, 38) ;
+}
 .profile-contents{
   display:flex;
   flex-direction: column;
@@ -26,7 +61,9 @@
 }
 
 .profile-contents a{
+  
   padding: 10px;
   background-color: bisque; 
+  text-decoration: none;
 }
 

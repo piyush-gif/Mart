@@ -10,11 +10,9 @@ const ProductList = ({category}) => {
         .filter(product => product.category === category)
         .map(product => (
           <div key={product.id} className="products">
-            <h3>{product.id}</h3>
             <p>{product.name}</p>
-            <p>{product.price}</p>
+            <p>price: {product.price}</p>
             <p>{product.category}</p>
-            <p>{product.description}</p>
             <p>{product.expirationDate}</p>
             <hr/>
           </div>
