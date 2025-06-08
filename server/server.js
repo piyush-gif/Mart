@@ -27,6 +27,17 @@ const server = http.createServer((req, res) => {
       res.end(data);
     });
   }
+  else if (req.method ==='GET' && req.url =='/cart'){
+    fs.readFile('./data/cart.json',  'utf8' ,(err, data) => {
+      if (err) {
+        res.statusCode == 500;
+        return res.end('Error reading the data');
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.statusCode = 200;
+      res.end(data);
+    })
+  }
   
   else if(req.method ==='POST' && req.url ==='/addtocart') {
     let body ='';
@@ -45,17 +56,17 @@ const server = http.createServer((req, res) => {
           return res.end('Error reading cart data');
         }
         const cart = JSON.parse(cartData);
-        cart.cart.push(product); // assuming cart.json has a "cart" array
+        cart.cart.push(product);
 
-        fs.writeFile('./data/cart.json', JSON.stringify(cart, null, 2), err => {
-          if (err) {
-            res.statusCode = 500;
-            return res.end('Error saving to cart');
-          }
-           res.writeHead(200, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ message: 'Added to cart', data: product }));
-        });
+      fs.writeFile('./data/cart.json', JSON.stringify(cart, null, 2), err => {
+        if (err) {
+          res.statusCode = 500;
+          return res.end('Error saving to cart');
+        }
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ message: 'Added to cart', data: product }));
       });
+    });
       }
       catch (err) {
       res.statusCode = 400;

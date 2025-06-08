@@ -31,6 +31,38 @@
       "price": 2.99,
       "expirationDate": "2025-06-15",
       "category": "Fruit"
+    },
+    {
+      "id": "2",
+      "name": "Bananas",
+      "description": "Sweet and energy-rich bananas.",
+      "price": 0.79,
+      "expirationDate": "2025-06-10",
+      "category": "Fruit"
+    },
+    {
+      "id": "17",
+      "name": "T-Shirt Pack",
+      "description": "Pack of 3 cotton t-shirts.",
+      "price": 24.99,
+      "expirationDate": "2026-01-01",
+      "category": "Luga Shop"
+    },
+    {
+      "id": "17",
+      "name": "T-Shirt Pack",
+      "description": "Pack of 3 cotton t-shirts.",
+      "price": 24.99,
+      "expirationDate": "2026-01-01",
+      "category": "Luga Shop"
+    },
+    {
+      "id": "28",
+      "name": "Dish Rack",
+      "description": "Two-tier stainless steel dish rack.",
+      "price": 27.99,
+      "expirationDate": "2026-01-01",
+      "category": "Household"
     }
   ]
 }
