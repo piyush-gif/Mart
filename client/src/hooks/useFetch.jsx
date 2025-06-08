@@ -12,7 +12,7 @@ const useFetch = () => {
       return res.json();
     })
     .then((data)=> {
-      useProductData(data);
+      useProductData(data.products);
     })
     .catch((err)=> {
       useError(err);

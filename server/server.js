@@ -1,21 +1,30 @@
 import http from 'http';
-
-
+import fs from 'fs';
 
 const PORT = 8000;
+
+
 const server = http.createServer((req, res) => {
 
-  if (res.method ==='GET'){
-    res.setHeader('Content-Type', 'text/html');
-    res.statusCode = 200;
-    res.write('hello world');
-    res.end();
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  if (req.method ==='GET' && req.url ==='/products'){
+
+    fs.readFile('./data/db.json' , 'utf8', (err,data) => {
+      if (err){
+        res.statusCode = 500;
+        return res.end('Error reading the data');
+      }
+      res.setHeader('Content-Type' , 'application/json');
+      res.statusCode = 200;
+      res.end(data);
+    });
   }
-  else if(res.method ==='POST') {
+  else if(req.method ==='POST') {
     console.log('hello post');
   }
   else{
-    throw new ERRO
+    res.statusCode = 404;
+    res.end('not found');
   }
  
 })
