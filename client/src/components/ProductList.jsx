@@ -2,6 +2,30 @@ import useFetch from "../hooks/useFetch";
 
 const ProductList = ({category}) => {
   const {productData, error}= useFetch()
+
+  const addToCartHandle = (product) => {
+    fetch('http://localhost:8000/addtocart',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+      },
+      body:JSON.stringify(product)
+    })
+    .then(res => {
+      if(!res.ok){
+        throw new Error('netweork problem');
+      }
+      return res.json();
+    })
+    .then((data) => {
+      console.log('added to cart', data);
+    })
+    .catch(err => {
+      console.log('ERROR', err)
+    })
+  }
+
+
   return (
     <div className='page-container'>
       <div className='page'>
@@ -14,7 +38,7 @@ const ProductList = ({category}) => {
             <p>price: {product.price}</p>
             <p>{product.category}</p>
             <p>{product.expirationDate}</p>
-            <hr/>
+            <button onClick={() => addToCartHandle(product)}>add to cart</button>
           </div>
           ))}
       </div>
