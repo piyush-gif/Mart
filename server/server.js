@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
   if (req.method === 'OPTIONS') {
     res.writeHead(204, {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, DELETE',
       'Access-Control-Allow-Headers': 'Content-Type',
     });
     return res.end();
@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
   else if (req.method ==='GET' && req.url =='/cart'){
     fs.readFile('./data/cart.json',  'utf8' ,(err, data) => {
       if (err) {
-        res.statusCode == 500;
+        res.statusCode = 500;
         return res.end('Error reading the data');
       }
       res.setHeader('Content-Type', 'application/json');
@@ -72,6 +72,28 @@ const server = http.createServer((req, res) => {
       res.statusCode = 400;
       res.end('Invalid JSON');
       }
+    })
+  }
+
+  else if (req.method === 'DELETE' && req.url.startsWith('/cart/')){
+    const id = req.url.split('/')[2];
+    fs.readFile('./data/cart.json', 'utf8', (err, data) => {
+      if (err){
+        res.statusCode = 500;
+        return res.end('Error reading cart data');
+      }
+      const cart = JSON.parse(data);
+      cart.cart = cart.cart.filter(item => item.id.toString() !== id);
+
+
+    fs.writeFile('./data/cart.json', JSON.stringify(cart, null, 2), err  => {
+      if (err) {
+        res.statusCode = 500;
+        return res.end('Error saving cart data')
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ message: 'Item deleted' }));
+    })
     })
   }
   else{
