@@ -12,6 +12,7 @@ import Settings from './pages/Settings.jsx';
 import AccountPage from './pages/AccountPage.jsx';
 import OrdersPage from './pages/OrdersPage.jsx';
 import Cart from './pages/Cart.jsx';
+
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
   const toggleSideBar = () => {
