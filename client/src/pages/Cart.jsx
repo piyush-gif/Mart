@@ -13,15 +13,12 @@ const Cart = () => {
       return res.json();
     })
     .then(data => {
-      console.log('Deleted:', data);
       setCartItems(prevItems => prevItems.filter(item => item.id !== itemid));
     })
     .catch(err => {
       console.error(err);
     });
-
   }
-  
 
   useEffect(() => {
     fetch('http://localhost:8000/cart',{})

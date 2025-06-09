@@ -1,3 +1,20 @@
 {
-  "cart": []
+  "cart": [
+    {
+      "id": "4",
+      "name": "Grapes",
+      "description": "Seedless green grapes, refreshing and sweet.",
+      "price": 4.25,
+      "expirationDate": "2025-06-12",
+      "category": "Fruit"
+    },
+    {
+      "id": "5",
+      "name": "Strawberries",
+      "description": "Fresh, ripe strawberries, great for desserts.",
+      "price": 3.5,
+      "expirationDate": "2025-06-08",
+      "category": "Fruit"
+    }
+  ]
 }

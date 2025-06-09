@@ -49,7 +49,6 @@ const server = http.createServer((req, res) => {
     req.on('end', () => {
       try{
        const product = JSON.parse(body);
-
       fs.readFile('./data/cart.json', 'utf8', (err, cartData) => {
         if (err) {
           res.statusCode = 500;
