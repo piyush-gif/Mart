@@ -83,8 +83,6 @@ const server = http.createServer((req, res) => {
       }
       const cart = JSON.parse(data);
       cart.cart = cart.cart.filter(item => item.id.toString() !== id);
-
-
     fs.writeFile('./data/cart.json', JSON.stringify(cart, null, 2), err  => {
       if (err) {
         res.statusCode = 500;
