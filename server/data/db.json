@@ -1,7 +1,6 @@
-{
-  "products": [
+[
     {
-      "id": "1",
+
       "name": "Apples",
       "description": "Crisp red apples, perfect for snacking.",
       "price": 2.99,
@@ -9,7 +8,7 @@
       "category": "Fruit"
     },
     {
-      "id": "2",
+
       "name": "Bananas",
       "description": "Sweet and energy-rich bananas.",
       "price": 0.79,
@@ -17,7 +16,7 @@
       "category": "Fruit"
     },
     {
-      "id": "3",
+
       "name": "Oranges",
       "description": "Juicy oranges, packed with Vitamin C.",
       "price": 1.50,
@@ -25,7 +24,7 @@
       "category": "Fruit"
     },
     {
-      "id": "4",
+
       "name": "Grapes",
       "description": "Seedless green grapes, refreshing and sweet.",
       "price": 4.25,
@@ -33,7 +32,7 @@
       "category": "Fruit"
     },
     {
-      "id": "5",
+
       "name": "Strawberries",
       "description": "Fresh, ripe strawberries, great for desserts.",
       "price": 3.50,
@@ -41,7 +40,7 @@
       "category": "Fruit"
     },
     {
-      "id": "6",
+
       "name": "Spoon Set",
       "description": "Stainless steel spoons, pack of 6.",
       "price": 5.99,
@@ -49,7 +48,7 @@
       "category": "Utensils"
     },
     {
-      "id": "7",
+
       "name": "Cutting Board",
       "description": "Durable plastic cutting board for kitchen use.",
       "price": 8.49,
@@ -57,7 +56,7 @@
       "category": "Utensils"
     },
     {
-      "id": "8",
+
       "name": "Frying Pan",
       "description": "Non-stick frying pan, 12 inch.",
       "price": 14.99,
@@ -65,7 +64,7 @@
       "category": "Utensils"
     },
     {
-      "id": "9",
+
       "name": "Kitchen Knife",
       "description": "Sharp stainless steel chef's knife.",
       "price": 9.99,
@@ -73,7 +72,7 @@
       "category": "Utensils"
     },
     {
-      "id": "10",
+
       "name": "Measuring Cups",
       "description": "Plastic measuring cups set, 5 pieces.",
       "price": 6.49,
@@ -81,7 +80,7 @@
       "category": "Utensils"
     },
     {
-      "id": "11",
+
       "name": "Action Figure",
       "description": "Superhero action figure with movable limbs.",
       "price": 12.99,
@@ -89,7 +88,7 @@
       "category": "Toys"
     },
     {
-      "id": "12",
+
       "name": "Puzzle Set",
       "description": "1000-piece landscape puzzle.",
       "price": 7.49,
@@ -97,7 +96,7 @@
       "category": "Toys"
     },
     {
-      "id": "13",
+
       "name": "Lego Bricks",
       "description": "Creative building block set.",
       "price": 29.99,
@@ -105,7 +104,7 @@
       "category": "Toys"
     },
     {
-      "id": "14",
+
       "name": "Stuffed Bear",
       "description": "Soft and cuddly teddy bear.",
       "price": 10.00,
@@ -113,7 +112,7 @@
       "category": "Toys"
     },
     {
-      "id": "15",
+
       "name": "Remote Car",
       "description": "Rechargeable RC racing car.",
       "price": 19.99,
@@ -121,7 +120,7 @@
       "category": "Toys"
     },
     {
-      "id": "16",
+
       "name": "Denim Jacket",
       "description": "Stylish unisex denim jacket.",
       "price": 45.00,
@@ -129,7 +128,7 @@
       "category": "Luga Shop"
     },
     {
-      "id": "17",
+
       "name": "T-Shirt Pack",
       "description": "Pack of 3 cotton t-shirts.",
       "price": 24.99,
@@ -137,7 +136,7 @@
       "category": "Luga Shop"
     },
     {
-      "id": "18",
+
       "name": "Sneakers",
       "description": "Comfortable running sneakers.",
       "price": 59.99,
@@ -145,7 +144,7 @@
       "category": "Luga Shop"
     },
     {
-      "id": "19",
+
       "name": "Winter Hat",
       "description": "Woolen hat for cold weather.",
       "price": 12.99,
@@ -153,7 +152,7 @@
       "category": "Luga Shop"
     },
     {
-      "id": "20",
+
       "name": "Cargo Pants",
       "description": "Durable outdoor cargo pants.",
       "price": 34.99,
@@ -161,7 +160,7 @@
       "category": "Luga Shop"
     },
     {
-      "id": "21",
+
       "name": "Smartphone",
       "description": "Latest model with OLED display.",
       "price": 699.00,
@@ -169,7 +168,7 @@
       "category": "Electronic"
     },
     {
-      "id": "22",
+
       "name": "Bluetooth Speaker",
       "description": "Waterproof portable speaker.",
       "price": 49.99,
@@ -177,7 +176,7 @@
       "category": "Electronic"
     },
     {
-      "id": "23",
+
       "name": "Laptop",
       "description": "Lightweight laptop with 16GB RAM.",
       "price": 899.00,
@@ -185,7 +184,7 @@
       "category": "Electronic"
     },
     {
-      "id": "24",
+
       "name": "Headphones",
       "description": "Noise-cancelling wireless headphones.",
       "price": 129.99,
@@ -193,7 +192,7 @@
       "category": "Electronic"
     },
     {
-      "id": "25",
+
       "name": "USB Charger",
       "description": "Fast-charging USB adapter.",
       "price": 14.99,
@@ -201,7 +200,7 @@
       "category": "Electronic"
     },
     {
-      "id": "26",
+
       "name": "Broom Set",
       "description": "Broom and dustpan combo.",
       "price": 11.99,
@@ -209,7 +208,7 @@
       "category": "Household"
     },
     {
-      "id": "27",
+
       "name": "Laundry Basket",
       "description": "Foldable fabric laundry basket.",
       "price": 15.99,
@@ -217,7 +216,7 @@
       "category": "Household"
     },
     {
-      "id": "28",
+
       "name": "Dish Rack",
       "description": "Two-tier stainless steel dish rack.",
       "price": 27.99,
@@ -225,7 +224,7 @@
       "category": "Household"
     },
     {
-      "id": "29",
+
       "name": "Mop Bucket",
       "description": "Spin mop with bucket set.",
       "price": 23.50,
@@ -233,7 +232,7 @@
       "category": "Household"
     },
     {
-      "id": "30",
+
       "name": "Storage Box",
       "description": "Plastic stackable storage container.",
       "price": 9.99,
@@ -241,4 +240,3 @@
       "category": "Household"
     }
   ]
-}

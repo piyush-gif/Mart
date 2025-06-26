@@ -10,6 +10,10 @@ const HomePage = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         ></input>
+
+        <div>
+          
+        </div>
     </div>
    );
 }

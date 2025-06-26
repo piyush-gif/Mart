@@ -4,7 +4,7 @@ const ProductList = ({category}) => {
   const {productData, error}= useFetch()
 
   const addToCartHandle = (product) => {
-    fetch('http://localhost:8000/addtocart',{
+    fetch('http://localhost:8000/add_to_cart',{
       method:'POST',
       headers:{
         'Content-Type':'application/json',
@@ -33,11 +33,11 @@ const ProductList = ({category}) => {
         {productData && productData
         .filter(product => product.category === category)
         .map(product => (
-          <div key={product.id} className="products">
+          <div key={product._id} className="products">
             <p>{product.name}</p>
             <p>price: {product.price}</p>
             <p>{product.category}</p>
-            <p>{product.expirationDate}</p>
+            <p>{new Date(product.expirationDate).toLocaleDateString()}</p>
             <button onClick={() => addToCartHandle(product)}>add to cart</button>
           </div>
           ))}

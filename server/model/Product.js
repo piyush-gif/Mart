@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema({
   name: String,
-  price: Number,
   description: String,
-  image: String,
+  price: Number,
+  expirationDate: Date,
   category: String,
-  inStock: Boolean,
+  
 });
 
 export default mongoose.model('Product', productSchema);
