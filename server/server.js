@@ -20,7 +20,22 @@ mongoose.connect(uri)
 
 app.post('/add_to_cart', async (req, res) => {
   try {
-    const newCartItem = await Cart.create(req.body);
+    const {_id, name, price, category, expirationDate } = req.body;
+    const existingItem = await Cart.findOne({productId: _id});
+
+    if (existingItem){
+      existingItem.quantity += 1;
+      await existingItem.save();
+      return res.json({message: 'quantitiy updated', item: existingItem});
+    }
+    const newCartItem = await Cart.create({
+      productId: _id,
+      name, 
+      price, 
+      category, 
+      expirationDate,
+      quantity: 1
+    });
     res.json({ message: 'Added to cart', item: newCartItem });
   } catch (err) {
     console.log(err);

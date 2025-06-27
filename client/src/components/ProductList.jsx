@@ -13,7 +13,7 @@ const ProductList = ({category}) => {
     })
     .then(res => {
       if(!res.ok){
-        throw new Error('netweork problem');
+        throw new Error('network problem');
       }
       return res.json();
     })

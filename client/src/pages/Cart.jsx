@@ -45,6 +45,7 @@ const Cart = () => {
             <p>price: {item.price}</p>
             <p>{item.category}</p>
             <p>{item.expirationDate}</p>
+            <p>{item.quantity}</p>
             <button onClick={()=> itemDeleteHandle(item._id)}>Remove from cart</button>
           </div>
           )  
