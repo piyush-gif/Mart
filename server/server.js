@@ -64,6 +64,16 @@ app.delete('/cart/:id', async (req, res) => {
   }
 });
 
+app.get('/cart-count', async (req, res) => {
+  try{
+    const cartItems = await Cart.find();
+    const total = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    res.json({total});
+  } catch(err) {
+    res.status(500).json({error : 'failed to fetch cart count'});
+  }
+})
+
 
 app.get('/get-data', async (req, res) => {
   try {

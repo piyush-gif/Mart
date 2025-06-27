@@ -12,7 +12,7 @@ import Settings from './pages/Settings.jsx';
 import AccountPage from './pages/AccountPage.jsx';
 import OrdersPage from './pages/OrdersPage.jsx';
 import Cart from './pages/Cart.jsx';
-
+import { CartProvider } from './contexts/CartContext.jsx';
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
   const toggleSideBar = () => {
@@ -20,9 +20,10 @@ function App() {
   };
   return (
     <>
+    <CartProvider>
       <NavBar toggleSideBar={toggleSideBar} />
       {showSideBar && <SideBar/>}
-
+    
       <Routes>
         <Route path="/" element ={<HomePage/>} />
         <Route path="/level1" element ={<Level1/>}/>
@@ -35,6 +36,7 @@ function App() {
         <Route path="/Orders" element={<OrdersPage/>}/>
         <Route path='/Cart' element={<Cart/>}/>
       </Routes>
+    </CartProvider>
     </>
   )
 }

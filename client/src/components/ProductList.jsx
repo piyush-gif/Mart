@@ -1,7 +1,11 @@
 import useFetch from "../hooks/useFetch";
+import { useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
+
 
 const ProductList = ({category}) => {
-  const {productData, error}= useFetch()
+  const {data: productData, error}= useFetch('http://localhost:5000/get-data');
+  const {refreshCartCount} = useContext(CartContext);
 
   const addToCartHandle = (product) => {
     fetch('http://localhost:5000/add_to_cart',{
@@ -17,8 +21,8 @@ const ProductList = ({category}) => {
       }
       return res.json();
     })
-    .then((data) => {
-      console.log('added to cart', data);
+    .then(() => {
+      refreshCartCount();
     })
     .catch(err => {
       console.log('ERROR', err)

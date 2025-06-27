@@ -1,25 +1,25 @@
 import { useState,useEffect } from "react";
 
-const useFetch = () => {
-  const [productData, useProductData] = useState('');
-  const [error, useError] = useState(null);
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5000/get-data')
+    fetch(url)
     .then((res) => {
       if(!res.ok){
-      throw new Error('hello');}
+      throw new Error('faile to fetch!');}
       return res.json();
     })
     .then((data)=> {
-      useProductData(data);
+      setData(data);
     })
     .catch((err)=> {
-      useError(err);
+      setError(err);
     })
-  },[]);
+  },[url]);
 
-  return  {productData, error};
+  return  {data, error};
 }
  
 export default useFetch;

@@ -1,9 +1,11 @@
 import {useEffect ,  useState} from "react";
+import { useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
 
 const Cart = () => {
 
   const [cartItems, setCartItems] = useState(null)
-
+  const { refreshCartCount } = useContext(CartContext);
   const itemDeleteHandle = (itemid) => {
     fetch(`http://localhost:5000/cart/${itemid}`, {
     method: 'DELETE',
@@ -11,6 +13,9 @@ const Cart = () => {
     .then(res => {
       if (!res.ok) throw new Error('Delete failed');
       return res.json();
+    })
+    .then(() => {
+      refreshCartCount();
     })
     .then(data => {
       setCartItems(prevItems => prevItems.filter(item => item._id !== itemid));
