@@ -4,7 +4,7 @@ const ProductList = ({category}) => {
   const {productData, error}= useFetch()
 
   const addToCartHandle = (product) => {
-    fetch('http://localhost:8000/add_to_cart',{
+    fetch('http://localhost:5000/add_to_cart',{
       method:'POST',
       headers:{
         'Content-Type':'application/json',

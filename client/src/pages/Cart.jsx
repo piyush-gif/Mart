@@ -5,7 +5,7 @@ const Cart = () => {
   const [cartItems, setCartItems] = useState(null)
 
   const itemDeleteHandle = (itemid) => {
-    fetch(`http://localhost:8000/cart/${itemid}`, {
+    fetch(`http://localhost:5000/cart/${itemid}`, {
     method: 'DELETE',
     })
     .then(res => {
@@ -13,7 +13,7 @@ const Cart = () => {
       return res.json();
     })
     .then(data => {
-      setCartItems(prevItems => prevItems.filter(item => item.id !== itemid));
+      setCartItems(prevItems => prevItems.filter(item => item._id !== itemid));
     })
     .catch(err => {
       console.error(err);
@@ -21,13 +21,13 @@ const Cart = () => {
   }
 
   useEffect(() => {
-    fetch('http://localhost:8000/cart',{})
+    fetch('http://localhost:5000/get-cart-data',{})
   .then((res) => {
     if(!res.ok) throw new Error('no data');
     return res.json();
   })
   .then((data) => {
-  setCartItems(data.cart);
+  setCartItems(data);
   console.log(data);
   })
   .catch(err =>{
@@ -45,7 +45,7 @@ const Cart = () => {
             <p>price: {item.price}</p>
             <p>{item.category}</p>
             <p>{item.expirationDate}</p>
-            <button onClick={()=> itemDeleteHandle(item.id)}>Remove from cart</button>
+            <button onClick={()=> itemDeleteHandle(item._id)}>Remove from cart</button>
           </div>
           )  
         }
