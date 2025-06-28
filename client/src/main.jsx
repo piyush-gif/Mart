@@ -8,6 +8,7 @@ import './styles/productlist.css'
 import './styles/index.css'
 import './styles/cart.css'
 import './styles/login.css'
+import './styles/createAccount.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 
