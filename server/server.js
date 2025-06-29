@@ -7,6 +7,7 @@ import cors from "cors";
 import Product from "./model/Product.js";
 import Cart from "./model/Cart.js";
 import User from "./model/User.js";
+import bcrypt from "bcrypt";
 
 const uri = process.env.MONGODB_URI;
 const app = express();
@@ -27,8 +28,30 @@ const logger = (req, res, next) => {
   next();
 };
 
-app.get("/test", logger, (req, res) => {
-  res.json({ message: "Test route" });
+app.post("/register", logger, async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser)
+      return res.status(400).json({ message: "Emial already in use" });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({
+      name: username,
+      email,
+      password: hashedPassword,
+      role: "user",
+    });
+
+    await newUser.save();
+    res.status(201).json({
+      message: "User created successfully",
+      user: newUser,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "failed to save data" });
+  }
 });
 
 app.post("/add_to_cart", async (req, res) => {

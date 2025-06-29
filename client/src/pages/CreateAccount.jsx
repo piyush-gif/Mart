@@ -8,10 +8,37 @@ const CreateAccountPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Username:', username);
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+
+    fetch('http://localhost:5000/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert('Account created successfully!');
+          // Optionally redirect to login page or home page
+        } else {
+          return response.json().then((data) => {
+            throw new Error(data.message || 'Failed to create account');
+          });
+        }
+      })
+      .catch((error) => {
+        alert(`Error: ${error.message}`);
+      });
+    
   };
 
   return (
