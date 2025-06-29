@@ -15,6 +15,7 @@ import Cart from './pages/Cart.jsx';
 import { CartProvider } from './contexts/CartContext.jsx';
 import LoginPage from './pages/loginPage.jsx';
 import CreateAccountPage from './pages/CreateAccount.jsx';
+import AdminPage from './pages/AdminPage.jsx';
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
   const toggleSideBar = () => {
@@ -39,6 +40,7 @@ function App() {
         <Route path='/Cart' element={<Cart/>}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path="/createAccount" element={<CreateAccountPage/>}/>
+        <Route path="/admin" element={<AdminPage/>}/>
       </Routes>
     </CartProvider>
     
