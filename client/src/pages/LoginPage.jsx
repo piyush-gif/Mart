@@ -1,13 +1,32 @@
 import  { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+    
+
+    fetch('http://localhost:5000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          navigate('/');
+        } else {
+          return response.json().then((data) => {
+            throw new Error(data.message || 'Failed to login');
+          });
+        }
+      })
   };
 
   return (

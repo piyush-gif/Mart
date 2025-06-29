@@ -39,7 +39,7 @@ function App() {
         <Route path="/Orders" element={<OrdersPage/>}/>
         <Route path='/Cart' element={<Cart/>}/>
         <Route path='/login' element={<LoginPage/>}/>
-        <Route path="/createAccount" element={<CreateAccountPage/>}/>
+        <Route path="/create-account" element={<CreateAccountPage/>}/>
         <Route path="/admin" element={<AdminPage/>}/>
       </Routes>
     </CartProvider>
