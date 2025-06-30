@@ -9,6 +9,7 @@ import Cart from "./model/Cart.js";
 import User from "./model/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import auth from "./middleware/auth.js";
 
 const uri = process.env.MONGODB_URI;
 const app = express();
@@ -68,7 +69,7 @@ app.post("/login", async (req, res) => {
 
     const token = jwt.sign(
       { userId: user._id, email: user.email, role: user.role },
-      process.env.JWT_SECRET, // Make sure you have JWT_SECRET in your .env file
+      process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
     res.json({ message: "Login successful", token });
@@ -78,7 +79,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.post("/add_to_cart", async (req, res) => {
+app.post("/add_to_cart", auth, async (req, res) => {
   try {
     const { _id, name, price, category, expirationDate } = req.body;
     const existingItem = await Cart.findOne({ productId: _id });

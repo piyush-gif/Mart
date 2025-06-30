@@ -8,25 +8,27 @@ const ProductList = ({category}) => {
   const {refreshCartCount} = useContext(CartContext);
 
   const addToCartHandle = (product) => {
-    fetch('http://localhost:5000/add_to_cart',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
+    const token = localStorage.getItem('token');
+    fetch('http://localhost:5000/add_to_cart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` 
       },
-      body:JSON.stringify(product)
+      body: JSON.stringify(product)
     })
-    .then(res => {
-      if(!res.ok){
-        throw new Error('network problem');
-      }
-      return res.json();
-    })
-    .then(() => {
-      refreshCartCount();
-    })
-    .catch(err => {
-      console.log('ERROR', err)
-    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('network problem');
+        }
+        return res.json();
+      })
+      .then(() => {
+        refreshCartCount();
+      })
+      .catch(err => {
+        console.log('ERROR', err)
+      })
   }
 
 

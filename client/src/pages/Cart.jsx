@@ -6,34 +6,42 @@ const Cart = () => {
 
   const [cartItems, setCartItems] = useState(null)
   const { refreshCartCount } = useContext(CartContext);
-  const itemDeleteHandle = (itemid) => {
-    fetch(`http://localhost:5000/cart/${itemid}`, {
+ const itemDeleteHandle = (itemid) => {
+  const token = localStorage.getItem('token');
+  fetch(`http://localhost:5000/cart/${itemid}`, {
     method: 'DELETE',
-    })
-    .then(res => {
-      if (!res.ok) throw new Error('Delete failed');
-      return res.json();
-    })
-    .then(() => {
-      refreshCartCount();
-    })
-    .then(data => {
-      setCartItems(prevItems => prevItems.filter(item => item._id !== itemid));
-    })
-    .catch(err => {
-      console.error(err);
-    });
-  }
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => {
+    if (!res.ok) throw new Error('Delete failed');
+    return res.json();
+  })
+  .then(() => {
+    refreshCartCount();
+    setCartItems(prevItems => prevItems.filter(item => item._id !== itemid));
+  })
+  .catch(err => {
+    console.error(err);
+  });
+}
 
-  useEffect(() => {
-    fetch('http://localhost:5000/get-cart-data',{})
+useEffect(() => {
+  const token = localStorage.getItem('token');
+  fetch('http://localhost:5000/get-cart-data', {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  })
   .then((res) => {
     if(!res.ok) throw new Error('no data');
     return res.json();
   })
   .then((data) => {
-  setCartItems(data);
-  console.log(data);
+    setCartItems(data);
   })
   .catch(err =>{
     console.error('error fetching cart', err);

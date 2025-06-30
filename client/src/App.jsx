@@ -13,7 +13,7 @@ import AccountPage from './pages/AccountPage.jsx';
 import OrdersPage from './pages/OrdersPage.jsx';
 import Cart from './pages/Cart.jsx';
 import { CartProvider } from './contexts/CartContext.jsx';
-import LoginPage from './pages/loginPage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
 import CreateAccountPage from './pages/CreateAccount.jsx';
 import AdminPage from './pages/AdminPage.jsx';
 function App() {
