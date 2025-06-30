@@ -8,6 +8,7 @@ import Product from "./model/Product.js";
 import Cart from "./model/Cart.js";
 import User from "./model/User.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const uri = process.env.MONGODB_URI;
 const app = express();
@@ -22,7 +23,6 @@ mongoose
   .catch((err) => console.log("mongodb connection error", err));
 
 // Routes
-
 const logger = (req, res, next) => {
   console.log(`${req.method} ${req.url} ${new Date().toISOString()} ${req.ip}`);
   next();
@@ -34,7 +34,7 @@ app.post("/register", logger, async (req, res) => {
 
     const existingUser = await User.findOne({ email });
     if (existingUser)
-      return res.status(400).json({ message: "Emial already in use" });
+      return res.status(400).json({ message: "Email already in use" });
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
       name: username,
@@ -65,7 +65,13 @@ app.post("/login", async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid password" });
     }
-    res.json({ message: "Login successful", user });
+
+    const token = jwt.sign(
+      { userId: user._id, email: user.email, role: user.role },
+      process.env.JWT_SECRET, // Make sure you have JWT_SECRET in your .env file
+      { expiresIn: "1h" }
+    );
+    res.json({ message: "Login successful", token });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "failed to save data" });

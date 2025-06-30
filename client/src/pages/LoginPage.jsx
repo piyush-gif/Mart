@@ -20,14 +20,24 @@ const LoginPage = () => {
     })
       .then((response) => {
         if (response.ok) {
-          navigate('/');
-        } else {
+          return response.json();
+        }
+        else{
           return response.json().then((data) => {
             throw new Error(data.message || 'Failed to login');
           });
         }
       })
-  };
+      .then((data) => {
+      if (data && data.token) {
+        localStorage.setItem('token', data.token); // Save JWT to localStorage
+        navigate('/');
+      }
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+};
 
   return (
     <div className="login-container">
