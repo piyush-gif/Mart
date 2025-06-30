@@ -2,10 +2,17 @@ import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import {CartContext} from '../contexts/CartContext';
+import { useNavigate } from 'react-router-dom';
 
 const NavBar = ({toggleSideBar}) => {
   const [showProfile, setShowProfile] = useState(false);
   const {cartCount} = useContext(CartContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login'); 
+  };
   const toggleProfile = () => {
     setShowProfile(prev => !prev);
   }
@@ -24,7 +31,7 @@ const NavBar = ({toggleSideBar}) => {
               <Link to='/Account'>Your account</Link>
               <Link to='/Orders'>Your orders</Link>
               <Link to='/Settings'>Settings</Link>
-              <Link to='#'>Log out</Link>
+              <button onClick={handleLogout} className="logout-btn">Log out</button>
             </div>
           </div>
           }
