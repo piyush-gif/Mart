@@ -1,9 +1,14 @@
 import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
+// ...existing imports...
+
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { fetchCartItems } = useContext(CartContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     
@@ -31,9 +36,10 @@ const LoginPage = () => {
       .then((data) => {
       if (data && data.token) {
         localStorage.setItem('token', data.token); // Save JWT to localStorage
+        fetchCartItems(); // <-- Refresh cart state after login
         navigate('/');
       }
-    })
+})
     .catch((error) => {
       alert(error.message);
     });

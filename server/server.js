@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
 import Product from "./model/Product.js";
-import Cart from "./model/Cart.js";
+
 import User from "./model/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -81,51 +81,66 @@ app.post("/login", async (req, res) => {
 
 app.post("/add_to_cart", auth, async (req, res) => {
   try {
-    const { _id, name, price, category, expirationDate } = req.body;
-    const existingItem = await Cart.findOne({ productId: _id });
+    const userId = req.user.userId;
+    const { _id: productId, name, price, category, expirationDate } = req.body;
 
-    if (existingItem) {
-      existingItem.quantity += 1;
-      await existingItem.save();
-      return res.json({ message: "quantitiy updated", item: existingItem });
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    const cartItem = user.cart.find((item) => item.productId.equals(productId));
+    if (cartItem) {
+      cartItem.quantity += 1;
+    } else {
+      user.cart.push({
+        productId,
+        name,
+        price,
+        category,
+        expirationDate,
+        quantity: 1,
+      });
     }
-    const newCartItem = await Cart.create({
-      productId: _id,
-      name,
-      price,
-      category,
-      expirationDate,
-      quantity: 1,
-    });
-    res.json({ message: "Added to cart", item: newCartItem });
+    await user.save();
+    res.json({ message: "Cart updated", cart: user.cart });
   } catch (err) {
     console.log(err);
-    res.status(500).json({ error: "failed to save data" });
+    res.status(500).json({ error: "failed to update cart" });
   }
 });
 
-app.get("/get-cart-data", async (req, res) => {
+app.get("/get-cart-data", auth, async (req, res) => {
   try {
-    const cartItems = await Cart.find();
-    res.json(cartItems);
+    const userId = req.user.userId;
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.json(user.cart);
   } catch (err) {
-    res.status(500).json({ error: "Falied to fetch data" });
+    res.status(500).json({ error: "Failed to fetch cart data" });
   }
 });
 
-app.delete("/cart/:id", async (req, res) => {
+app.delete("/cart/:id", auth, async (req, res) => {
   try {
-    await Cart.findByIdAndDelete(req.params.id);
-    res.json({ message: "Item deleted" });
+    const userId = req.user.userId;
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    user.cart = user.cart.filter(
+      (item) => item.productId.toString() !== req.params.id
+    );
+    await user.save();
+    res.json({ message: "Item deleted", cart: user.cart });
   } catch (err) {
     res.status(500).json({ error: "Delete failed" });
   }
 });
 
-app.get("/cart-count", async (req, res) => {
+app.get("/cart-count", auth, async (req, res) => {
   try {
-    const cartItems = await Cart.find();
-    const total = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+    const userId = req.user.userId;
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    const total = user.cart.reduce((acc, item) => acc + item.quantity, 0);
     res.json({ total });
   } catch (err) {
     res.status(500).json({ error: "failed to fetch cart count" });

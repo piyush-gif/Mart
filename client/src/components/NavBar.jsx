@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import {CartContext} from '../contexts/CartContext';
@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom';
 
 const NavBar = ({toggleSideBar}) => {
   const [showProfile, setShowProfile] = useState(false);
-  const {cartCount} = useContext(CartContext);
+  const {cartCount, setCartItems, setCartCount} = useContext(CartContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    setCartItems([]);
+    setCartCount(0);
     navigate('/login'); 
   };
   const toggleProfile = () => {

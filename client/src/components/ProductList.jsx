@@ -5,7 +5,7 @@ import { CartContext } from '../contexts/CartContext';
 
 const ProductList = ({category}) => {
   const {data: productData, error}= useFetch('http://localhost:5000/get-data');
-  const {refreshCartCount} = useContext(CartContext);
+  const { fetchCartItems} = useContext(CartContext);
 
   const addToCartHandle = (product) => {
     const token = localStorage.getItem('token');
@@ -24,7 +24,7 @@ const ProductList = ({category}) => {
         return res.json();
       })
       .then(() => {
-        refreshCartCount();
+        fetchCartItems();
       })
       .catch(err => {
         console.log('ERROR', err)
