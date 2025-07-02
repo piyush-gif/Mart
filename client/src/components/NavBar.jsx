@@ -26,7 +26,9 @@ const NavBar = ({ toggleSideBar }) => {
           className="p-2 rounded hover:bg-gray-200 transition"
           aria-label="Open sidebar"
         >
-          button
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12.005 11.995v.01m0-4.01v.01m0 7.99v.01"/>
+          </svg>
         </button>
         <span className="text-xl font-bold text-blue-600">MART</span>
         <Link to="/" className="text-gray-700 hover:text-blue-600 transition">
