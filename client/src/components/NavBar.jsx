@@ -19,14 +19,16 @@ const NavBar = ({ toggleSideBar }) => {
   };
 
   return (
-    <nav className="bg-white shadow flex items-center justify-between px-6 py-3">
+   <nav className="bg-white shadow flex items-center justify-between px-6 py-3">
       <div className="flex items-center gap-4">
         <button
           onClick={toggleSideBar}
-          className="text-xl font-bold text-blue-600 hover:text-blue-800 transition"
+          className="p-2 rounded hover:bg-gray-200 transition"
+          aria-label="Open sidebar"
         >
-          MART
+          button
         </button>
+        <span className="text-xl font-bold text-blue-600">MART</span>
         <Link to="/" className="text-gray-700 hover:text-blue-600 transition">
           Home
         </Link>

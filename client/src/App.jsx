@@ -18,14 +18,16 @@ import CreateAccountPage from './pages/CreateAccount.jsx';
 import AdminPage from './pages/AdminPage.jsx';
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
+
   const toggleSideBar = () => {
     setShowSideBar(prev => !prev);
   };
+  const closeSideBar = () => setShowSideBar(false);
   return (
     <>
     <CartProvider>
       <NavBar toggleSideBar={toggleSideBar} />
-      {showSideBar && <SideBar/>}
+      <SideBar isOpen={showSideBar} onClose={closeSideBar} />
     
       <Routes>
         <Route path="/" element ={<HomePage/>} />
