@@ -33,24 +33,27 @@ const ProductList = ({category}) => {
 
 
   return (
-    <div className='page-container'>
-      <div className='page'>
-        {error && <h1>{error.message}</h1>}
+    <div className="min-h-screen bg-gray-100 py-8">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {error && <h1 className="col-span-full text-red-600 text-center">{error.message}</h1>}
         {productData && productData
-        .filter(product => product.category === category)
-        .map(product => (
-          <div key={product._id} className="products">
-            <p>{product.name}</p>
-            <p>price: {product.price}</p>
-            <p>{product.category}</p>
-            <p>{new Date(product.expirationDate).toLocaleDateString()}</p>
-            <button onClick={() => addToCartHandle(product)}>add to cart</button>
-          </div>
+          .filter(product => product.category === category)
+          .map(product => (
+            <div key={product._id} className="bg-white rounded-lg shadow p-6 flex flex-col items-start">
+              <p className="text-lg font-semibold mb-1">{product.name}</p>
+              <p className="text-gray-700 mb-1">Price: <span className="font-medium">${product.price}</span></p>
+              <p className="text-gray-500 mb-1">{product.category}</p>
+              <p className="text-gray-400 mb-2">{new Date(product.expirationDate).toLocaleDateString()}</p>
+              <button
+                onClick={() => addToCartHandle(product)}
+                className="mt-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition"
+              >
+                Add to cart
+              </button>
+            </div>
           ))}
       </div>
     </div>
-
-
     );
 }
  
