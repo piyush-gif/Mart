@@ -8,6 +8,7 @@ import Level2 from './pages/Level2.jsx'
 import Level3 from './pages/Level3.jsx'
 import Level4 from './pages/Level4.jsx'
 import Level5 from './pages/Level5.jsx'
+import Admin from './admin/admin.jsx';
 import Settings from './pages/Settings.jsx';
 import AccountPage from './pages/AccountPage.jsx';
 import OrdersPage from './pages/OrdersPage.jsx';
@@ -15,7 +16,6 @@ import Cart from './pages/Cart.jsx';
 import { CartProvider } from './contexts/CartContext.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import CreateAccountPage from './pages/CreateAccount.jsx';
-import AdminPage from './pages/AdminPage.jsx';
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
 
@@ -42,7 +42,7 @@ function App() {
         <Route path='/Cart' element={<Cart/>}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path="/create-account" element={<CreateAccountPage/>}/>
-        <Route path="/admin" element={<AdminPage/>}/>
+        <Route path="/admin" element={<Admin/>}/>
       </Routes>
     </CartProvider>
     
