@@ -46,7 +46,7 @@ const ProductList = ({category}) => {
               <p className="text-gray-400 mb-2">{new Date(product.expirationDate).toLocaleDateString()}</p>
               <button
                 onClick={() => addToCartHandle(product)}
-                className="mt-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition"
+                className="mt-auto bg-blue-500 hover:bg-blue-600 active:bg-blue-300 text-white px-4 py-2 rounded transition cursor-pointer"
               >
                 Add to cart
               </button>

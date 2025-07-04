@@ -51,7 +51,7 @@ const Cart = () => {
                 </div>
                 <button
                   onClick={() => itemDeleteHandle(item.productId)}
-                  className="mt-4 sm:mt-0 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded transition"
+                  className="mt-4 sm:mt-0 bg-red-500 hover:bg-red-600 active:bg-blue-300 text-white px-4 py-2 rounded transition cursor-pointer"
                 >
                   Remove from cart
                 </button>
