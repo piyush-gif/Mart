@@ -41,7 +41,7 @@ app.post("/register", logger, async (req, res) => {
       name: username,
       email,
       password: hashedPassword,
-      role: "user",
+      role: ["user"],
     });
 
     await newUser.save();
@@ -55,7 +55,7 @@ app.post("/register", logger, async (req, res) => {
   }
 });
 
-app.post("/login", async (req, res) => {
+app.post("/login", logger, async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });

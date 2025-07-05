@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
   username: String,
   email: String,
   password: String,
-  role: String,
+  role: { type: [String], default: ["user"] },
   cart: [cartItemSchema], // <-- Embedded cart array
 });
 
