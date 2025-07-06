@@ -147,6 +147,18 @@ app.get("/cart-count", auth, async (req, res) => {
   }
 });
 
+app.get("/user-data", logger, auth, async (req, res) => {
+  try {
+    if (!req.user.role || !req.user.role.includes("admin")) {
+      return res.status(403).json({ message: "access denied : Admin only" });
+    }
+    const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch user data" });
+  }
+});
+
 app.get("/get-data", async (req, res) => {
   try {
     const allProducts = await Product.find();
