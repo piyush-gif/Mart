@@ -2,7 +2,6 @@ import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
-// ...existing imports...
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -11,8 +10,6 @@ const LoginPage = () => {
   const { fetchCartItems } = useContext(CartContext);
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-
     fetch('http://localhost:5000/login', {
       method: 'POST',
       headers: {
@@ -23,23 +20,24 @@ const LoginPage = () => {
         password,
       }),
     })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
         }
         else{
-          return response.json().then((data) => {
+          return res.json().then((data) => {
             throw new Error(data.message || 'Failed to login');
           });
         }
       })
       .then((data) => {
-      if (data && data.token) {
-        localStorage.setItem('token', data.token); // Save JWT to localStorage
-        fetchCartItems(); // <-- Refresh cart state after login
+      if (data && data.accesstoken && data.refreshtoken) {
+        localStorage.setItem('token', data.accesstoken);
+        localStorage.setItem('refreshtoken', data.refreshtoken);
+        fetchCartItems(); 
         navigate('/');
       }
-})
+    })
     .catch((error) => {
       alert(error.message);
     });
