@@ -1,36 +1,33 @@
 import useFetch from "../hooks/useFetch";
 import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
-
+import {authFetch} from '../utils/authFetch';
 
 const ProductList = ({category}) => {
   const {data: productData, error}= useFetch('http://localhost:5000/get-data');
   const { fetchCartItems} = useContext(CartContext);
 
   const addToCartHandle = (product) => {
-    const token = localStorage.getItem('token');
-    fetch('http://localhost:5000/add_to_cart', {
+    authFetch('http://localhost:5000/add_to_cart', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}` 
       },
-      body: JSON.stringify(product)
+      body: JSON.stringify(product),
     })
-      .then(res => {
+      .then((res) => {
         if (!res.ok) {
-          throw new Error('network problem');
+          throw new Error('Network error while adding to cart');
         }
         return res.json();
       })
       .then(() => {
-        fetchCartItems();
+        fetchCartItems(); // Refresh cart
       })
-      .catch(err => {
-        console.log('ERROR', err)
-      })
-  }
-
+      .catch((err) => {
+        console.error('Add to cart error:', err);
+      });
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 py-8">

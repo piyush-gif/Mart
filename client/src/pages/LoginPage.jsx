@@ -1,84 +1,78 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { fetchCartItems } = useContext(CartContext);
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    fetch('http://localhost:5000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        else{
-          return res.json().then((data) => {
-            throw new Error(data.message || 'Failed to login');
-          });
-        }
-      })
-      .then((data) => {
-      if (data && data.accesstoken && data.refreshtoken) {
-        localStorage.setItem('token', data.accesstoken);
-        localStorage.setItem('refreshtoken', data.refreshtoken);
-        fetchCartItems(); 
+    try {
+      const response = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to login');
+      }
+
+      if (data.accesstoken && data.refreshtoken) {
+        localStorage.setItem('accessToken', data.accesstoken);
+        localStorage.setItem('refreshToken', data.refreshtoken);
+        fetchCartItems();
         navigate('/');
       }
-    })
-    .catch((error) => {
+    } catch (error) {
       alert(error.message);
-    });
-};
+    }
+  };
 
   return (
-  <div className="min-h-screen flex items-center justify-center bg-gray-100">
-    <div className="w-full max-w-md bg-white rounded-lg shadow p-8">
-      <div className="mb-6 text-center">
-        <h2 className="text-2xl font-bold text-gray-800">Login Page</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="w-full max-w-md bg-white rounded-lg shadow p-8">
+        <div className="mb-6 text-center">
+          <h2 className="text-2xl font-bold text-gray-800">Login Page</h2>
+        </div>
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div>
+            <label className="block text-gray-700 mb-1">Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 mb-1">Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded transition"
+          >
+            Login
+          </button>
+        </form>
       </div>
-      <form className="space-y-4" onSubmit={handleSubmit}>
-        <div>
-          <label className="block text-gray-700 mb-1">Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-gray-700 mb-1">Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded transition"
-        >
-          Login
-        </button>
-      </form>
     </div>
-  </div>
   );
 };
 

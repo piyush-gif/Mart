@@ -84,6 +84,10 @@ app.post("/login", logger, async (req, res) => {
   }
 });
 
+app.post("/logout", (req, res) => {
+  res.json({ message: "Logged out" });
+});
+
 app.post("/add_to_cart", auth, async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -113,7 +117,6 @@ app.post("/add_to_cart", auth, async (req, res) => {
   }
 });
 
-// Example refresh endpoint
 app.post("/refresh-token", async (req, res) => {
   const { refreshToken } = req.body;
   if (!refreshToken)
@@ -121,11 +124,19 @@ app.post("/refresh-token", async (req, res) => {
 
   try {
     const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+    const user = await User.findById(decoded.userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
     const newAccessToken = jwt.sign(
-      { userId: decoded.userId },
+      {
+        userId: user._id,
+        email: user.email,
+        role: user.role,
+      },
       process.env.JWT_SECRET,
       { expiresIn: "15m" }
     );
+
     res.json({ accessToken: newAccessToken });
   } catch (err) {
     res.status(401).json({ message: "Invalid or expired refresh token" });

@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
-
+import { authFetch } from "../utils/authFetch";
 const Admin = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    fetch("http://localhost:5000/user-data", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+
+    authFetch("http://localhost:5000/user-data")
       .then((res) => {
         if (!res.ok) throw new Error("Not authorized or error fetching data");
         return res.json();

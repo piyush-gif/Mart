@@ -1,17 +1,13 @@
 import { useEffect, useContext } from "react";
 import { CartContext } from '../contexts/CartContext';
-
+import {authFetch} from '../utils/authFetch';
 const Cart = () => {
   const { cartItems, fetchCartItems } = useContext(CartContext);
 
   const itemDeleteHandle = (itemid) => {
     const token = localStorage.getItem('token');
-    fetch(`http://localhost:5000/cart/${itemid}`, {
+    authFetch(`http://localhost:5000/cart/${itemid}`, {
       method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
     })
     .then(res => {
       if (!res.ok) throw new Error('Delete failed');

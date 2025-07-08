@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
-
+import { authFetch } from '../utils/authFetch';
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
@@ -14,12 +14,7 @@ export const CartProvider = ({ children }) => {
       return;
     }
     try {
-      const res = await fetch('http://localhost:5000/get-cart-data', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      });
+      const res = await authFetch('http://localhost:5000/get-cart-data');
       if (!res.ok) throw new Error('Failed to fetch cart items');
       const data = await res.json();
       setCartItems(data);
