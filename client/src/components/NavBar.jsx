@@ -8,7 +8,7 @@ const NavBar = ({ toggleSideBar }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
     setCartItems([]);
     setCartCount(0);
     navigate('/login');

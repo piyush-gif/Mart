@@ -10,9 +10,6 @@ const ProductList = ({category}) => {
   const addToCartHandle = (product) => {
     authFetch('http://localhost:5000/add_to_cart', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify(product),
     })
       .then((res) => {
@@ -22,7 +19,7 @@ const ProductList = ({category}) => {
         return res.json();
       })
       .then(() => {
-        fetchCartItems(); // Refresh cart
+        fetchCartItems();
       })
       .catch((err) => {
         console.error('Add to cart error:', err);

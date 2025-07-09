@@ -5,7 +5,6 @@ const Cart = () => {
   const { cartItems, fetchCartItems } = useContext(CartContext);
 
   const itemDeleteHandle = (itemid) => {
-    const token = localStorage.getItem('token');
     authFetch(`http://localhost:5000/cart/${itemid}`, {
       method: 'DELETE',
     })
@@ -14,7 +13,7 @@ const Cart = () => {
       return res.json();
     })
     .then(() => {
-      fetchCartItems(); // <-- Refresh both cartItems and cartCount
+      fetchCartItems();
     })
     .catch(err => {
       console.error(err);

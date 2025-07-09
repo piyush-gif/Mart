@@ -1,5 +1,6 @@
-import React, { createContext, useState, useEffect, useCallback } from 'react';
+import  { createContext, useState, useEffect, useCallback } from 'react';
 import { authFetch } from '../utils/authFetch';
+
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
@@ -7,12 +8,6 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   const fetchCartItems = useCallback(async () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      setCartItems([]);
-      setCartCount(0);
-      return;
-    }
     try {
       const res = await authFetch('http://localhost:5000/get-cart-data');
       if (!res.ok) throw new Error('Failed to fetch cart items');
@@ -20,24 +15,26 @@ export const CartProvider = ({ children }) => {
       setCartItems(data);
       setCartCount(data.reduce((acc, item) => acc + item.quantity, 0));
     } catch (error) {
+      console.error('Cart fetch error:', error.message);
       setCartItems([]);
       setCartCount(0);
-      console.error(error);
     }
-  }, []); // useCallback with empty dependency array
+  }, []);
 
   useEffect(() => {
     fetchCartItems();
   }, [fetchCartItems]);
 
   return (
-    <CartContext.Provider value={{
-      cartCount,
-      setCartCount,
-      cartItems,
-      setCartItems,
-      fetchCartItems
-    }}>
+    <CartContext.Provider
+      value={{
+        cartCount,
+        setCartCount,
+        cartItems,
+        setCartItems,
+        fetchCartItems
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

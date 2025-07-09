@@ -28,7 +28,6 @@ const CreateAccountPage = () => {
       .then((response) => {
         if (response.ok) {
           alert('Account created successfully!');
-          // Optionally redirect to login page or home page
         } else {
           return response.json().then((data) => {
             throw new Error(data.message || 'Failed to create account');

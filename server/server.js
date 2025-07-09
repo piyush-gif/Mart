@@ -67,17 +67,21 @@ app.post("/login", logger, async (req, res) => {
       return res.status(401).json({ message: "Invalid password" });
     }
 
-    const accesstoken = jwt.sign(
+    const accessToken = jwt.sign(
       { userId: user._id, email: user.email, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "15m" }
     );
-    const refreshtoken = jwt.sign(
+    const refreshToken = jwt.sign(
       { userId: user._id, email: user.email, role: user.role },
       process.env.JWT_REFRESH_SECRET,
       { expiresIn: "7d" }
     );
-    res.json({ message: "Login successful", accesstoken, refreshtoken });
+    res.json({
+      message: "Login successful",
+      accessToken,
+      refreshToken,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "failed to save data" });
