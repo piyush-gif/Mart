@@ -88,10 +88,6 @@ app.post("/login", logger, async (req, res) => {
   }
 });
 
-app.post("/logout", (req, res) => {
-  res.json({ message: "Logged out" });
-});
-
 app.post("/add_to_cart", auth, async (req, res) => {
   try {
     const userId = req.user.userId;

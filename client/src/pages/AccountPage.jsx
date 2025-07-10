@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import AccountSidebar from '../components/account/AccountSidebar';
 import UserProfile from '../components/account/UserProfile';
 import OrderHistory from '../components/account/OrderHistory';
-// Import other components like AddressBook, PaymentMethods etc. as you create them
+import PaymentMethod from '../components/account/PaymentMethod';
+
 
 const AccountPage = () => {
   const [activeTab, setActiveTab] = useState('profile');
@@ -13,7 +14,8 @@ const AccountPage = () => {
         return <UserProfile />;
       case 'orders':
         return <OrderHistory />;
-      // Add cases for 'addresses', 'payment', 'wishlist' etc.
+      case 'payment':
+        return <PaymentMethod />;
       default:
         return <UserProfile />;
     }

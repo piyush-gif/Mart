@@ -1,10 +1,8 @@
-import React from 'react';
 
 const AccountSidebar = ({ activeTab, setActiveTab }) => {
   const navItems = [
     { key: 'profile', label: 'My Profile' },
     { key: 'orders', label: 'Order History' },
-    { key: 'addresses', label: 'Address Book' },
     { key: 'payment', label: 'Payment Methods' },
 
   ];
