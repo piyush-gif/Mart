@@ -14,6 +14,25 @@ const CreateAccountPage = () => {
       return;
     }
 
+    const passwordErrors = [];
+    if (password.length < 8) {
+      passwordErrors.push('8 characters');
+    }
+    if (!/[a-z]/.test(password)) {
+      passwordErrors.push('one lowercase letter');
+    }
+    if (!/[A-Z]/.test(password)) {
+      passwordErrors.push('one uppercase letter');
+    }
+    if (!/[^A-Za-z0-9]/.test(password)) {
+      passwordErrors.push('one special character');
+    }
+
+    if (passwordErrors.length > 0) {
+      alert(`Password must contain at least ${passwordErrors.join(', ')}.`);
+      return;
+    }
+
     fetch('http://localhost:5000/register', {
       method: 'POST',
       headers: {
