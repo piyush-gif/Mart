@@ -38,7 +38,7 @@ app.post("/register", logger, async (req, res) => {
       return res.status(400).json({ message: "Email already in use" });
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
-      name: username,
+      username,
       email,
       password: hashedPassword,
       role: ["user"],
@@ -184,11 +184,17 @@ app.get("/cart-count", auth, async (req, res) => {
 
 app.get("/user-data", logger, auth, async (req, res) => {
   try {
-    if (!req.user.role || !req.user.role.includes("admin")) {
-      return res.status(403).json({ message: "access denied : Admin only" });
+    //  admin
+    if (req.user.role && req.user.role.includes("admin")) {
+      const users = await User.find();
+      return res.json(users);
     }
-    const users = await User.find();
-    res.json(users);
+
+    // regular user
+    const user = await User.findById(req.user.userId).select("-password");
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.json(user);
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch user data" });
   }
