@@ -26,9 +26,9 @@ const LoginPage = () => {
         throw new Error(data.message || 'Failed to login');
       }
 
-      if (data.accesstoken && data.refreshtoken) {
-        localStorage.setItem('accessToken', data.accesstoken);
-        localStorage.setItem('refreshToken', data.refreshtoken);
+      if (data.accessToken && data.refreshToken) {
+        localStorage.setItem('accessToken', data.accessToken);
+        localStorage.setItem('refreshToken', data.refreshToken);
         fetchCartItems();
         navigate('/');
       }

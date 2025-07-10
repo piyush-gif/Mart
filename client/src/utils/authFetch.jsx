@@ -22,7 +22,6 @@ export const authFetch = async (url, options = {}) => {
       accessToken = data.accessToken;
       localStorage.setItem('accessToken', accessToken);
 
-      // Retry original request with new token
       options.headers.Authorization = `Bearer ${accessToken}`;
       response = await fetch(url, options);
     } else {
