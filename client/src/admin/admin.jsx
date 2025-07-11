@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { authFetch } from "../utils/authFetch";
-import UserTable from "./UserTable";
-import ProductTable from "./ProductTable";
+import UserTable from "./UserTable"
 import ProductForm from "./ProductForm";
 
 const Admin = () => {
@@ -159,18 +158,34 @@ const Admin = () => {
         />
       )}
 
-      {activeTab === 'products' && (
-        <div className="space-y-8">
-          <section>
-            <h2 className="text-xl font-semibold mb-4">Add New Product</h2>
-            <ProductForm onCreate={handleProductCreate} />
-          </section>
-          <section>
-            <h2 className="text-xl font-semibold mb-4">Existing Products</h2>
-            <ProductTable products={products} onUpdate={handleProductUpdate} onDelete={handleProductDelete} />
-          </section>
-        </div>
-      )}
+     {activeTab === 'products' && (
+      <div className="space-y-8">
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Add New Product</h2>
+          <ProductForm onCreate={handleProductCreate} />
+        </section>
+        <section>
+          <h2 className="text-xl font-semibold mb-4">Existing Products</h2>
+          {products.length === 0 ? (
+            <p className="text-gray-500">No products available.</p>
+          ) : (
+            <ul className="space-y-2">
+              {products.map((product) => (
+                <li
+                  key={product._id}
+                  className="bg-white shadow p-4 rounded border flex justify-between items-center"
+                >
+                  <div>
+                    <p className="font-semibold">{product.name}</p>
+                    <p className="text-sm text-gray-600">Price: ${product.price}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      </div>
+  )}
     </div>
   );
 };

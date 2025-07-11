@@ -209,7 +209,7 @@ app.get("/get-data", async (req, res) => {
   }
 });
 
-app.get("/products", async (req, res) => {
+app.get("/products", auth, async (req, res) => {
   try {
     const products = await Product.find();
     res.json(products);
