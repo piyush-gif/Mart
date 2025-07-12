@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { authFetch } from "../utils/authFetch";
 
-const UserTable = ({ users, onDelete, onUpdate }) => {
+const UserTable = ({ users, setUsers, setError }) => {
   const [editingId, setEditingId] = useState(null);
   const [editedUser, setEditedUser] = useState({ email: "", role: "" });
 
@@ -10,16 +11,51 @@ const UserTable = ({ users, onDelete, onUpdate }) => {
   };
 
   const handleSave = async () => {
-    await onUpdate(editingId, {
-      email: editedUser.email,
-      role: editedUser.role.split(",").map(r => r.trim()),
-    });
-    setEditingId(null);
+    try {
+      const res = await authFetch(`http://localhost:5000/users/${editingId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: editedUser.email,
+          role: editedUser.role.split(",").map((r) => r.trim()),
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed to update user");
+
+      setUsers((prev) =>
+        prev.map((user) =>
+          user._id === editingId
+            ? { ...user, ...editedUser, role: editedUser.role.split(",").map((r) => r.trim()) }
+            : user
+        )
+      );
+      setEditingId(null);
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Delete this user?")) return;
+    try {
+      const res = await authFetch(`http://localhost:5000/users/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) throw new Error("Failed to delete user");
+
+      setUsers((prev) => prev.filter((user) => user._id !== id));
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
     <div className="overflow-x-auto bg-white shadow rounded p-4">
-      <table className="min-w-full table-auto border-collapse border">
+      <table className="min-w-full">
         <thead>
           <tr className="bg-gray-200">
             <th className="p-2 border">Email</th>
@@ -35,7 +71,9 @@ const UserTable = ({ users, onDelete, onUpdate }) => {
                   <input
                     type="email"
                     value={editedUser.email}
-                    onChange={(e) => setEditedUser({ ...editedUser, email: e.target.value })}
+                    onChange={(e) =>
+                      setEditedUser({ ...editedUser, email: e.target.value })
+                    }
                     className="w-full p-1 border rounded"
                   />
                 ) : (
@@ -47,9 +85,10 @@ const UserTable = ({ users, onDelete, onUpdate }) => {
                   <input
                     type="text"
                     value={editedUser.role}
-                    onChange={(e) => setEditedUser({ ...editedUser, role: e.target.value })}
+                    onChange={(e) =>
+                      setEditedUser({ ...editedUser, role: e.target.value })
+                    }
                     className="w-full p-1 border rounded"
-                    placeholder="admin, user"
                   />
                 ) : (
                   user.role?.join(", ")
@@ -60,13 +99,13 @@ const UserTable = ({ users, onDelete, onUpdate }) => {
                   <>
                     <button
                       onClick={handleSave}
-                      className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+                      className="bg-green-600 text-white px-3 py-1 rounded"
                     >
                       Save
                     </button>
                     <button
                       onClick={() => setEditingId(null)}
-                      className="bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600"
+                      className="bg-gray-500 text-white px-3 py-1 rounded"
                     >
                       Cancel
                     </button>
@@ -75,13 +114,13 @@ const UserTable = ({ users, onDelete, onUpdate }) => {
                   <>
                     <button
                       onClick={() => handleEditClick(user)}
-                      className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                      className="bg-blue-600 text-white px-3 py-1 rounded"
                     >
                       Edit
                     </button>
                     <button
-                      onClick={() => onDelete(user._id)}
-                      className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
+                      onClick={() => handleDelete(user._id)}
+                      className="bg-red-600 text-white px-3 py-1 rounded"
                     >
                       Delete
                     </button>
