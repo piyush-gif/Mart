@@ -3,6 +3,7 @@ import { authFetch } from "../utils/authFetch";
 import UserTable from "./UserTable";
 import ProductForm from "./ProductForm";
 
+
 const Admin = () => {
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);

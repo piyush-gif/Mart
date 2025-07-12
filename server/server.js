@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import express from "express";
 import cors from "cors";
 import Product from "./model/Product.js";
+import productRoutes from "./routes/productRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 import User from "./model/User.js";
 import bcrypt from "bcrypt";
@@ -200,56 +202,16 @@ app.get("/user-data", logger, auth, async (req, res) => {
   }
 });
 
+// Register product routes
+app.use("/products", productRoutes);
+app.use("/users", userRoutes);
+
 app.get("/get-data", async (req, res) => {
   try {
     const allProducts = await Product.find();
     res.json(allProducts);
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch data" });
-  }
-});
-
-app.get("/products", auth, async (req, res) => {
-  try {
-    const products = await Product.find();
-    res.json(products);
-  } catch (err) {
-    res.status(500).json({ error: "Failed to fetch products" });
-  }
-});
-
-// ✅ POST create new product (you can protect with auth + admin check if needed)
-app.post("/products", auth, async (req, res) => {
-  try {
-    const newProduct = new Product(req.body);
-    await newProduct.save();
-    res.status(201).json(newProduct);
-  } catch (err) {
-    res.status(500).json({ error: "Failed to create product" });
-  }
-});
-
-// ✅ PUT update product by ID
-app.put("/products/:id", auth, async (req, res) => {
-  try {
-    const updated = await Product.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    if (!updated) return res.status(404).json({ message: "Product not found" });
-    res.json(updated);
-  } catch (err) {
-    res.status(500).json({ error: "Failed to update product" });
-  }
-});
-
-// ✅ DELETE product by ID
-app.delete("/products/:id", auth, async (req, res) => {
-  try {
-    const deleted = await Product.findByIdAndDelete(req.params.id);
-    if (!deleted) return res.status(404).json({ message: "Product not found" });
-    res.json({ message: "Product deleted successfully" });
-  } catch (err) {
-    res.status(500).json({ error: "Failed to delete product" });
   }
 });
 
