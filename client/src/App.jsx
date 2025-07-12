@@ -15,8 +15,10 @@ import OrdersPage from './pages/OrdersPage.jsx';
 import Cart from './pages/Cart.jsx';
 import CheckoutPage from './pages/CheckoutPage.jsx';
 import { CartProvider } from './contexts/CartContext.jsx';
+import { ThemeProvider } from './contexts/ThemeContext.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import CreateAccountPage from './pages/CreateAccount.jsx';
+
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
 
@@ -24,31 +26,31 @@ function App() {
     setShowSideBar(prev => !prev);
   };
   const closeSideBar = () => setShowSideBar(false);
+  
   return (
-    <>
-    <CartProvider>
-      <NavBar toggleSideBar={toggleSideBar} />
-      <SideBar isOpen={showSideBar} onClose={closeSideBar} />
-    
-      <Routes>
-        <Route path="/" element ={<HomePage/>} />
-        <Route path="/level1" element ={<Level1/>}/>
-        <Route path="/level2" element ={<Level2/>}/>
-        <Route path="/level3" element ={<Level3/>}/>
-        <Route path="/level4" element ={<Level4/>}/>
-        <Route path="/level5" element ={<Level5/>}/>
-        <Route path="/Settings" element={<Settings/>}/>
-        <Route path="/Account" element={<AccountPage/>}/>
-        <Route path="/Orders" element={<OrdersPage/>}/>
-        <Route path='/Cart' element={<Cart/>}/>
-        <Route path='/checkout' element={<CheckoutPage/>}/>
-        <Route path='/login' element={<LoginPage/>}/>
-        <Route path="/create-account" element={<CreateAccountPage/>}/>
-        <Route path="/admin" element={<Admin/>}/>
-      </Routes>
-    </CartProvider>
-    
-    </>
+    <ThemeProvider>
+      <CartProvider>
+        <NavBar toggleSideBar={toggleSideBar} />
+        <SideBar isOpen={showSideBar} onClose={closeSideBar} />
+      
+        <Routes>
+          <Route path="/" element ={<HomePage/>} />
+          <Route path="/level1" element ={<Level1/>}/>
+          <Route path="/level2" element ={<Level2/>}/>
+          <Route path="/level3" element ={<Level3/>}/>
+          <Route path="/level4" element ={<Level4/>}/>
+          <Route path="/level5" element ={<Level5/>}/>
+          <Route path="/Settings" element={<Settings/>}/>
+          <Route path="/Account" element={<AccountPage/>}/>
+          <Route path="/Orders" element={<OrdersPage/>}/>
+          <Route path='/Cart' element={<Cart/>}/>
+          <Route path='/checkout' element={<CheckoutPage/>}/>
+          <Route path='/login' element={<LoginPage/>}/>
+          <Route path="/create-account" element={<CreateAccountPage/>}/>
+          <Route path="/admin" element={<Admin/>}/>
+        </Routes>
+      </CartProvider>
+    </ThemeProvider>
   )
 }
 
