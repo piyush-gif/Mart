@@ -13,6 +13,7 @@ import Settings from './pages/Settings.jsx';
 import AccountPage from './pages/AccountPage.jsx';
 import OrdersPage from './pages/OrdersPage.jsx';
 import Cart from './pages/Cart.jsx';
+import CheckoutPage from './pages/CheckoutPage.jsx';
 import { CartProvider } from './contexts/CartContext.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import CreateAccountPage from './pages/CreateAccount.jsx';
@@ -40,6 +41,7 @@ function App() {
         <Route path="/Account" element={<AccountPage/>}/>
         <Route path="/Orders" element={<OrdersPage/>}/>
         <Route path='/Cart' element={<Cart/>}/>
+        <Route path='/checkout' element={<CheckoutPage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path="/create-account" element={<CreateAccountPage/>}/>
         <Route path="/admin" element={<Admin/>}/>

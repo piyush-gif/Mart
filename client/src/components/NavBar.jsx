@@ -20,7 +20,7 @@ const NavBar = ({ toggleSideBar }) => {
   };
 
   return (
-   <nav className="bg-gray-900 shadow-lg border-b border-gray-700 flex items-center justify-between px-6 py-3">
+   <nav className="sticky top-0 z-50 bg-gray-900 shadow-lg border-b border-gray-700 flex items-center justify-between px-6 py-3">
       <div className="flex items-center gap-4">
         <button
           onClick={toggleSideBar}
