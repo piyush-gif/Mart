@@ -45,24 +45,24 @@ const Admin = () => {
     fetchData();
   }, []);
 
-  if (loading) return <p className="text-center">Loading...</p>;
-  if (!authorized) return <p className="text-center text-red-600">{error}</p>;
+  if (loading) return <p className="text-center text-gray-300">Loading...</p>;
+  if (!authorized) return <p className="text-center text-red-400">{error}</p>;
 
   return (
-    <div className="min-h-screen p-6 bg-gray-100">
-      <h1 className="text-3xl font-bold text-center mb-6">Admin Dashboard</h1>
+    <div className="min-h-screen p-6 bg-gray-900">
+      <h1 className="text-3xl font-bold text-center mb-6 text-white">Admin Dashboard</h1>
 
-      {error && <p className="text-red-600 text-center mb-4">{error}</p>}
+      {error && <p className="text-red-400 text-center mb-4">{error}</p>}
 
-      <div className="flex border-b mb-6">
+      <div className="flex border-b border-gray-700 mb-6">
         {["users", "products"].map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`py-2 px-4 font-semibold ${
+            className={`py-2 px-4 font-semibold transition-colors ${
               activeTab === tab
-                ? "border-b-2 border-blue-600 text-blue-600"
-                : "text-gray-500 hover:text-blue-600"
+                ? "border-b-2 border-blue-500 text-blue-400"
+                : "text-gray-400 hover:text-blue-400"
             }`}
           >
             {tab === "users" ? "User Management" : "Product Management"}

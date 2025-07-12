@@ -54,19 +54,19 @@ const UserTable = ({ users, setUsers, setError }) => {
   };
 
   return (
-    <div className="overflow-x-auto bg-white shadow rounded p-4">
+    <div className="overflow-x-auto bg-gray-800 shadow rounded p-4">
       <table className="min-w-full">
         <thead>
-          <tr className="bg-gray-200">
-            <th className="p-2 border">Email</th>
-            <th className="p-2 border">Role</th>
-            <th className="p-2 border">Actions</th>
+          <tr className="bg-gray-700">
+            <th className="p-2 border border-gray-600 text-gray-200">Email</th>
+            <th className="p-2 border border-gray-600 text-gray-200">Role</th>
+            <th className="p-2 border border-gray-600 text-gray-200">Actions</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user._id} className="hover:bg-gray-100">
-              <td className="p-2 border">
+            <tr key={user._id} className="hover:bg-gray-700 text-gray-200">
+              <td className="p-2 border border-gray-600">
                 {editingId === user._id ? (
                   <input
                     type="email"
@@ -74,13 +74,13 @@ const UserTable = ({ users, setUsers, setError }) => {
                     onChange={(e) =>
                       setEditedUser({ ...editedUser, email: e.target.value })
                     }
-                    className="w-full p-1 border rounded"
+                    className="w-full p-1 border rounded bg-gray-700 text-gray-200 border-gray-500 focus:border-blue-500 focus:outline-none"
                   />
                 ) : (
                   user.email
                 )}
               </td>
-              <td className="p-2 border">
+              <td className="p-2 border border-gray-600">
                 {editingId === user._id ? (
                   <input
                     type="text"
@@ -88,24 +88,24 @@ const UserTable = ({ users, setUsers, setError }) => {
                     onChange={(e) =>
                       setEditedUser({ ...editedUser, role: e.target.value })
                     }
-                    className="w-full p-1 border rounded"
+                    className="w-full p-1 border rounded bg-gray-700 text-gray-200 border-gray-500 focus:border-blue-500 focus:outline-none"
                   />
                 ) : (
                   user.role?.join(", ")
                 )}
               </td>
-              <td className="p-2 border flex gap-2">
+              <td className="p-2 border border-gray-600 flex gap-2">
                 {editingId === user._id ? (
                   <>
                     <button
                       onClick={handleSave}
-                      className="bg-green-600 text-white px-3 py-1 rounded"
+                      className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded transition-colors"
                     >
                       Save
                     </button>
                     <button
                       onClick={() => setEditingId(null)}
-                      className="bg-gray-500 text-white px-3 py-1 rounded"
+                      className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded transition-colors"
                     >
                       Cancel
                     </button>
@@ -114,13 +114,13 @@ const UserTable = ({ users, setUsers, setError }) => {
                   <>
                     <button
                       onClick={() => handleEditClick(user)}
-                      className="bg-blue-600 text-white px-3 py-1 rounded"
+                      className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded transition-colors"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(user._id)}
-                      className="bg-red-600 text-white px-3 py-1 rounded"
+                      className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded transition-colors"
                     >
                       Delete
                     </button>

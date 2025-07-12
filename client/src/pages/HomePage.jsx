@@ -41,8 +41,8 @@ const HomePage = () => {
   useEffect(() => {
     if (productData) {
       const filtered = productData.filter(product =>
-        product.name.toLowerCase().includes(search.toLowerCase()) ||
-        product.category.toLowerCase().includes(search.toLowerCase())
+        (product.name && product.name.toLowerCase().includes(search.toLowerCase())) ||
+        (product.category && product.category.toLowerCase().includes(search.toLowerCase()))
       );
       setFilteredProducts(filtered);
     }
