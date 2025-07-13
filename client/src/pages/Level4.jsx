@@ -4,7 +4,7 @@ const Level4 = () => {
   return ( 
     <div>
       <div>
-          <ProductList category={'Electronic'}/>
+          <ProductList category={'Electronics'}/>
       </div>
     </div>
    );

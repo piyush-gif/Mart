@@ -36,7 +36,7 @@ const SideBar = ({ isOpen, onClose }) => {
                 : 'text-gray-700 hover:bg-blue-100 hover:text-blue-600'
             }`}
           >
-            Level 1 - Groceries
+             Groceries
           </Link>
           <Link 
             to="/level2" 
@@ -46,7 +46,7 @@ const SideBar = ({ isOpen, onClose }) => {
                 : 'text-gray-700 hover:bg-blue-100 hover:text-blue-600'
             }`}
           >
-            Level 2 - Utensils / Toys
+             Utensils / Toys
           </Link>
           <Link 
             to="/level3" 
@@ -56,7 +56,7 @@ const SideBar = ({ isOpen, onClose }) => {
                 : 'text-gray-700 hover:bg-blue-100 hover:text-blue-600'
             }`}
           >
-            Level 3 - Luga Shop
+             Clothes & Fashion
           </Link>
           <Link 
             to="/level4" 
@@ -66,7 +66,7 @@ const SideBar = ({ isOpen, onClose }) => {
                 : 'text-gray-700 hover:bg-blue-100 hover:text-blue-600'
             }`}
           >
-            Level 4 - Electronic
+             Electronic
           </Link>
           <Link 
             to="/level5" 
@@ -76,7 +76,7 @@ const SideBar = ({ isOpen, onClose }) => {
                 : 'text-gray-700 hover:bg-blue-100 hover:text-blue-600'
             }`}
           >
-            Level 5 - Household
+            Household
           </Link>
         </nav>
       </aside>

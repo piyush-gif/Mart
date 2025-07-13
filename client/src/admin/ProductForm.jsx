@@ -28,7 +28,7 @@ const ProductForm = ({ products, setProducts, setError }) => {
   const categories = [
     "Groceries",
     "Utensils / Toys", 
-    "Luga Shop",
+    "Clothes & Fashion",
     "Electronics",
     "Household"
   ];

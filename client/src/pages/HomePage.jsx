@@ -16,7 +16,7 @@ const HomePage = () => {
   const categories = [
     { name: "Groceries", path: "/level1", icon: "🛒" },
     { name: "Utensils & Toys", path: "/level2", icon: "🧸" },
-    { name: "Luga Shop", path: "/level3", icon: "👜" },
+    { name: "Clothes & Fashion", path: "/level3", icon: "👗" },
     { name: "Electronics", path: "/level4", icon: "📱" },
     { name: "Household", path: "/level5", icon: "🏠" }
   ];
