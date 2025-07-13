@@ -184,27 +184,24 @@ app.get("/cart-count", auth, async (req, res) => {
   }
 });
 
+// Register product routes
+app.use("/products", productRoutes);
+app.use("/users", userRoutes);
+
 app.get("/user-data", logger, auth, async (req, res) => {
   try {
-    //  admin
-    if (req.user.role && req.user.role.includes("admin")) {
-      const users = await User.find();
-      return res.json(users);
-    }
-
-    // regular user
+    console.log("User-data endpoint hit by:", req.user);
+    
+    // Get current user's data (for both admin and regular users)
     const user = await User.findById(req.user.userId).select("-password");
     if (!user) return res.status(404).json({ message: "User not found" });
 
     res.json(user);
   } catch (err) {
+    console.error("Error in user-data endpoint:", err);
     res.status(500).json({ error: "Failed to fetch user data" });
   }
 });
-
-// Register product routes
-app.use("/products", productRoutes);
-app.use("/users", userRoutes);
 
 app.get("/get-data", async (req, res) => {
   try {
