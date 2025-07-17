@@ -50,6 +50,9 @@ const ProductList = ({category}) => {
               <p className={`mb-2 ${
                 isDark ? 'text-gray-600' : 'text-gray-400'
               }`}>{new Date(product.expirationDate).toLocaleDateString()}</p>
+              <p className={`mb-1 ${
+                isDark ? 'text-yellow-400' : 'text-yellow-600'
+              }`}>Rating: <span className="font-medium">{product.rating} / 5</span></p>
               <button
                 onClick={() => addToCartHandle(product)}
                 className="mt-auto bg-blue-500 hover:bg-blue-600 active:bg-blue-300 text-white px-4 py-2 rounded transition cursor-pointer"
