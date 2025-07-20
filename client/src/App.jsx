@@ -18,6 +18,7 @@ import { CartProvider } from './contexts/CartContext.jsx';
 import { ThemeProvider } from './contexts/ThemeContext.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import CreateAccountPage from './pages/CreateAccount.jsx';
+import AllProducts from './pages/AllProducts.jsx';
 
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
@@ -48,6 +49,7 @@ function App() {
           <Route path='/login' element={<LoginPage/>}/>
           <Route path="/create-account" element={<CreateAccountPage/>}/>
           <Route path="/admin" element={<Admin/>}/>
+          <Route path="/all-products" element={<AllProducts/>}/>
         </Routes>
       </CartProvider>
     </ThemeProvider>
