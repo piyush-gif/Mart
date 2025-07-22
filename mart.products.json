@@ -1,0 +1,194 @@
+[{
+  "_id": {
+    "$oid": "6872ebdb0a4f27e60a05cfbe"
+  },
+  "name": "Sneakers",
+  "image": "sneakers.jpg",
+  "description": "",
+  "price": 60,
+  "category": "Clothes & Fashion",
+  "expirationDate": {
+    "$date": "2025-08-11T23:12:27.100Z"
+  },
+  "stock": 4,
+  "rating": 0,
+  "reviewCount": 0,
+  "isActive": true,
+  "createdAt": {
+    "$date": "2025-07-12T23:12:27.121Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-12T23:12:27.127Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6872f79960f1a2fda491125f"
+  },
+  "name": "Apple",
+  "image": "apple.jpg",
+  "description": "Fresh red apples, sold per kg.",
+  "price": 2.99,
+  "category": "Groceries",
+  "expirationDate": "2024-12-31T00:00:00.000Z",
+  "stock": 100,
+  "rating": 4.7,
+  "reviewCount": 20,
+  "isActive": true,
+  "createdAt": "2024-01-15T00:00:00.000Z",
+  "updatedAt": "2024-01-15T00:00:00.000Z"
+},
+{
+  "_id": {
+    "$oid": "6872f79960f1a2fda4911261"
+  },
+  "name": "Smartphone",
+  "image": "smartphone.jpg",
+  "description": "Latest model smartphone with 128GB storage.",
+  "price": 299.99,
+  "category": "Electronics",
+  "expirationDate": "2026-12-31T00:00:00.000Z",
+  "stock": 10,
+  "rating": 4.8,
+  "reviewCount": 30,
+  "isActive": true,
+  "createdAt": "2024-01-15T00:00:00.000Z",
+  "updatedAt": "2024-01-15T00:00:00.000Z"
+},
+{
+  "_id": {
+    "$oid": "6872f79960f1a2fda4911262"
+  },
+  "name": "Wireless Headphones",
+  "image": "wireless-headphones.jpg",
+  "description": "Noise-cancelling over-ear headphones.",
+  "price": 59.99,
+  "category": "Electronics",
+  "expirationDate": "2026-12-31T00:00:00.000Z",
+  "stock": 15,
+  "rating": 4.4,
+  "reviewCount": 18,
+  "isActive": true,
+  "createdAt": "2024-01-15T00:00:00.000Z",
+  "updatedAt": "2024-01-15T00:00:00.000Z"
+},
+{
+  "_id": {
+    "$oid": "6872f79960f1a2fda4911260"
+  },
+  "name": "Orange",
+  "image": "orange.jpg",
+  "description": "Juicy oranges, sold per kg.",
+  "price": 3.49,
+  "category": "Groceries",
+  "expirationDate": "2024-12-31T00:00:00.000Z",
+  "stock": 80,
+  "rating": 4.6,
+  "reviewCount": 15,
+  "isActive": true,
+  "createdAt": "2024-01-15T00:00:00.000Z",
+  "updatedAt": "2024-01-15T00:00:00.000Z"
+},
+{
+  "_id": {
+    "$oid": "6872f79960f1a2fda4911263"
+  },
+  "name": "Dish Soap",
+  "image": "dish-soap.jpg",
+  "description": "Lemon-scented dishwashing liquid.",
+  "price": 4.99,
+  "category": "Household",
+  "expirationDate": "2025-06-30T00:00:00.000Z",
+  "stock": 40,
+  "rating": 4.2,
+  "reviewCount": 7,
+  "isActive": true,
+  "createdAt": "2024-01-15T00:00:00.000Z",
+  "updatedAt": "2024-01-15T00:00:00.000Z"
+},
+{
+  "_id": {
+    "$oid": "6872f79960f1a2fda4911265"
+  },
+  "name": "Stainless Steel Spoon Set",
+  "image": "stainless-steel-spoon-set.jpg",
+  "description": "Set of 6 stainless steel spoons.",
+  "price": 6.99,
+  "category": "Utensils / Toys",
+  "expirationDate": "2027-12-31T00:00:00.000Z",
+  "stock": 50,
+  "rating": 4.3,
+  "reviewCount": 5,
+  "isActive": true,
+  "createdAt": "2024-01-15T00:00:00.000Z",
+  "updatedAt": "2024-01-15T00:00:00.000Z"
+},
+{
+  "_id": {
+    "$oid": "6872f79960f1a2fda491125d"
+  },
+  "name": "Classic T-Shirt",
+  "image": "classic-t-shirt.jpg",
+  "description": "Unisex cotton t-shirt, available in all sizes.",
+  "price": 19.99,
+  "category": "Clothes & Fashion",
+  "expirationDate": "2025-12-31T00:00:00.000Z",
+  "stock": 30,
+  "rating": 4.5,
+  "reviewCount": 12,
+  "isActive": true,
+  "createdAt": "2024-01-15T00:00:00.000Z",
+  "updatedAt": "2024-01-15T00:00:00.000Z"
+},
+{
+  "_id": {
+    "$oid": "6872f79960f1a2fda491125e"
+  },
+  "name": "Blue Jeans",
+  "image": "blue-jeans.jpg",
+  "description": "Comfortable blue jeans for everyday wear.",
+  "price": 34.99,
+  "category": "Clothes & Fashion",
+  "expirationDate": "2025-12-31T00:00:00.000Z",
+  "stock": 20,
+  "rating": 4.3,
+  "reviewCount": 8,
+  "isActive": true,
+  "createdAt": "2024-01-15T00:00:00.000Z",
+  "updatedAt": "2024-01-15T00:00:00.000Z"
+},
+{
+  "_id": {
+    "$oid": "6872f79960f1a2fda4911264"
+  },
+  "name": "Laundry Detergent",
+  "image": "laundry-detergent.jpg",
+  "description": "High-efficiency laundry detergent, 2L.",
+  "price": 8.99,
+  "category": "Household",
+  "expirationDate": "2025-06-30T00:00:00.000Z",
+  "stock": 25,
+  "rating": 4.5,
+  "reviewCount": 10,
+  "isActive": true,
+  "createdAt": "2024-01-15T00:00:00.000Z",
+  "updatedAt": "2024-01-15T00:00:00.000Z"
+},
+{
+  "_id": {
+    "$oid": "6872f79960f1a2fda4911266"
+  },
+  "name": "Building Blocks Toy",
+  "image": "building-blocks-toy.jpg",
+  "description": "Colorful building blocks for kids.",
+  "price": 14.99,
+  "category": "Utensils / Toys",
+  "expirationDate": "2027-12-31T00:00:00.000Z",
+  "stock": 30,
+  "rating": 4.7,
+  "reviewCount": 9,
+  "isActive": true,
+  "createdAt": "2024-01-15T00:00:00.000Z",
+  "updatedAt": "2024-01-15T00:00:00.000Z"
+}]

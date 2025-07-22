@@ -60,6 +60,7 @@ const UserTable = ({ users, setUsers, setError }) => {
           <tr className="bg-gray-700">
             <th className="p-2 border border-gray-600 text-gray-200">Email</th>
             <th className="p-2 border border-gray-600 text-gray-200">Role</th>
+            <th className="p-2 border border-gray-600 text-gray-200">Cart</th>
             <th className="p-2 border border-gray-600 text-gray-200">Actions</th>
           </tr>
         </thead>
@@ -92,6 +93,19 @@ const UserTable = ({ users, setUsers, setError }) => {
                   />
                 ) : (
                   user.role?.join(", ")
+                )}
+              </td>
+              <td className="p-2 border border-gray-600 text-xs">
+                {user.cart && user.cart.length > 0 ? (
+                  <ul>
+                    {user.cart.map((item, idx) => (
+                      <li key={idx}>
+                        {item.name} (x{item.quantity})
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <span className="text-gray-500">Empty</span>
                 )}
               </td>
               <td className="p-2 border border-gray-600 flex gap-2">

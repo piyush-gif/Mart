@@ -9,6 +9,12 @@ const CreateAccountPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Email validation
+    if (!email.includes('@') || !email.includes('.com')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
     if (password !== confirmPassword) {
       alert('Passwords do not match');
       return;

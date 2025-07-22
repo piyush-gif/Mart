@@ -262,6 +262,7 @@ const ProductForm = ({ products, setProducts, setError }) => {
                           key={product._id}
                           className="p-3 border border-gray-600 rounded shadow bg-gray-800"
                         >
+                          <img src={`http://localhost:5000/images/${product.image}`} alt={product.name} className="w-full h-32 object-cover mb-2 rounded" />
                           {editingId === product._id ? (
                             <div className="space-y-2">
                               <input
