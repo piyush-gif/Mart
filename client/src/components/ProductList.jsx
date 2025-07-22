@@ -38,6 +38,7 @@ const ProductList = ({category}) => {
             <div key={product._id} className={`rounded-lg shadow p-6 flex flex-col items-start ${
               isDark ? 'bg-gray-800' : 'bg-white'
             }`}>
+              <img src={`http://localhost:5000/images/${product.image}`} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-lg" />
               <p className={`text-lg font-semibold mb-1 ${
                 isDark ? 'text-gray-200' : 'text-gray-800'
               }`}>{product.name}</p>

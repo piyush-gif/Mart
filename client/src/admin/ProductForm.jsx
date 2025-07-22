@@ -10,7 +10,8 @@ const ProductForm = ({ products, setProducts, setError }) => {
     stock: "",
     rating: "",
     reviewCount: "",
-    isActive: true
+    isActive: true,
+    image: ""
   });
   const [loading, setLoading] = useState(false);
   const [editingId, setEditingId] = useState(null);
@@ -64,7 +65,8 @@ const ProductForm = ({ products, setProducts, setError }) => {
         stock: "",
         rating: "",
         reviewCount: "",
-        isActive: true
+        isActive: true,
+        image: ""
       });
       setError(null);
     } catch (err) {
@@ -176,6 +178,14 @@ const ProductForm = ({ products, setProducts, setError }) => {
           placeholder="Stock"
           value={product.stock}
           onChange={(e) => setProduct({ ...product, stock: e.target.value })}
+          className="p-2 border rounded bg-gray-700 text-gray-200 border-gray-600 focus:border-blue-500 focus:outline-none placeholder-gray-400"
+        />
+        <input
+          type="text"
+          required
+          placeholder="Image filename (e.g. apple.jpg)"
+          value={product.image}
+          onChange={e => setProduct({ ...product, image: e.target.value })}
           className="p-2 border rounded bg-gray-700 text-gray-200 border-gray-600 focus:border-blue-500 focus:outline-none placeholder-gray-400"
         />
       </div>
