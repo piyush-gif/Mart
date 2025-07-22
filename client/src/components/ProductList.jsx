@@ -1,15 +1,18 @@
 import useFetch from "../hooks/useFetch";
 import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
-import {authFetch} from '../utils/authFetch';
+import { authFetch } from '../utils/authFetch';
 import { useTheme } from '../contexts/ThemeContext';
+import { Link } from 'react-router-dom';
 
-const ProductList = ({category}) => {
-  const {data: productData, error}= useFetch('http://localhost:5000/get-data');
-  const { fetchCartItems} = useContext(CartContext);
+const ProductList = ({ category }) => {
+  const { data: productData, error } = useFetch('http://localhost:5000/get-data');
+  const { fetchCartItems } = useContext(CartContext);
   const { isDark } = useTheme();
 
-  const addToCartHandle = (product) => {
+  const addToCartHandle = (e, product) => {
+    e.preventDefault(); // Prevent navigation when clicking the button inside Link
+
     authFetch('http://localhost:5000/add_to_cart', {
       method: 'POST',
       body: JSON.stringify(product),
@@ -35,36 +38,32 @@ const ProductList = ({category}) => {
         {productData && productData
           .filter(product => product.category === category)
           .map(product => (
-            <div key={product._id} className={`rounded-lg shadow p-6 flex flex-col items-start ${
-              isDark ? 'bg-gray-800' : 'bg-white'
-            }`}>
-              <img src={`http://localhost:5000/images/${product.image}`} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-lg" />
-              <p className={`text-lg font-semibold mb-1 ${
-                isDark ? 'text-gray-200' : 'text-gray-800'
-              }`}>{product.name}</p>
-              <p className={`mb-1 ${
-                isDark ? 'text-gray-400' : 'text-gray-700'
-              }`}>Price: <span className="font-medium">${product.price}</span></p>
-              <p className={`mb-1 ${
-                isDark ? 'text-gray-500' : 'text-gray-500'
-              }`}>{product.category}</p>
-              <p className={`mb-2 ${
-                isDark ? 'text-gray-600' : 'text-gray-400'
-              }`}>{new Date(product.expirationDate).toLocaleDateString()}</p>
-              <p className={`mb-1 ${
-                isDark ? 'text-yellow-400' : 'text-yellow-600'
-              }`}>Rating: <span className="font-medium">{product.rating} / 5</span></p>
-              <button
-                onClick={() => addToCartHandle(product)}
-                className="mt-auto bg-blue-500 hover:bg-blue-600 active:bg-blue-300 text-white px-4 py-2 rounded transition cursor-pointer"
-              >
-                Add to cart
-              </button>
-            </div>
+            <Link
+              key={product._id}
+              to={`/product/${product._id}`}
+              className="no-underline"
+            >
+              <div className={`rounded-lg shadow p-6 flex flex-col items-start hover:shadow-lg transition cursor-pointer ${
+                isDark ? 'bg-gray-800' : 'bg-white'
+              }`}>
+                <img src={`http://localhost:5000/images/${product.image}`} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-lg" />
+                <p className={`text-lg font-semibold mb-1 ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>{product.name}</p>
+                <p className={`mb-1 ${isDark ? 'text-gray-400' : 'text-gray-700'}`}>Price: <span className="font-medium">${product.price}</span></p>
+                <p className={`mb-1 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>{product.category}</p>
+                <p className={`mb-2 ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>{new Date(product.expirationDate).toLocaleDateString()}</p>
+                <p className={`mb-1 ${isDark ? 'text-yellow-400' : 'text-yellow-600'}`}>Rating: <span className="font-medium">{product.rating} / 5</span></p>
+                <button
+                  onClick={(e) => addToCartHandle(e, product)}
+                  className="mt-auto bg-blue-500 hover:bg-blue-600 active:bg-blue-300 text-white px-4 py-2 rounded transition"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </Link>
           ))}
       </div>
     </div>
-    );
-}
- 
+  );
+};
+
 export default ProductList;

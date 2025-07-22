@@ -84,6 +84,7 @@ const AllProducts = () => {
             <div key={product._id} className={`rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 ${
               isDark ? 'bg-gray-800' : 'bg-white'
             }`}>
+               <img src={`http://localhost:5000/images/${product.image}`} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-lg" />
               <div className="mb-4">
                 <h3 className={`text-lg font-semibold mb-2 ${
                   isDark ? 'text-gray-200' : 'text-gray-800'

@@ -105,16 +105,6 @@ const NavBar = ({ toggleSideBar }) => {
                       Your account
                     </Link>
                     <Link
-                      to="/Orders"
-                      className={`px-4 py-2 rounded transition-colors ${
-                        isDark 
-                          ? 'text-gray-200 hover:bg-gray-700' 
-                          : 'text-gray-700 hover:bg-gray-100'
-                      }`}
-                    >
-                      Your orders
-                    </Link>
-                    <Link
                       to="/Settings"
                       className={`px-4 py-2 rounded transition-colors ${
                         isDark 

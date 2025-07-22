@@ -50,7 +50,14 @@ const HomePage = () => {
     }
   }, [search, productData]);
 
-  const featuredProducts = productData ? productData.slice(0, 6) : [];
+  // Pick one product per category for "Explore One Product Per Category"
+  const oneProductPerCategory = [];
+  if (productData) {
+    categories.forEach(cat => {
+      const prod = productData.find(p => p.category === cat.name);
+      if (prod) oneProductPerCategory.push(prod);
+    });
+  }
 
   return (
     <div className={`min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
@@ -107,12 +114,12 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* Featured Products */}
+      {/* Explore One Product From Each Category */}
       <div className="max-w-6xl mx-auto px-4 py-12">
         <h2 className={`text-3xl font-bold text-center mb-8 ${
           isDark ? 'text-white' : 'text-gray-800'
         }`}>
-          Featured Products
+          Explore One Product From Each Category
         </h2>
         
         {error && (
@@ -140,11 +147,19 @@ const HomePage = () => {
         )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {(search ? filteredProducts : featuredProducts).map((product) => (
-            <div key={product._id} className={`rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 ${
-              isDark ? 'bg-gray-800' : 'bg-white'
-            }`}>
-              <img src={`http://localhost:5000/images/${product.image}`} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-lg" />
+          {(search ? filteredProducts : oneProductPerCategory).map((product) => (
+            <Link
+              key={product._id}
+              to={`/products/${product._id}`}
+              className={`rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 block ${
+                isDark ? 'bg-gray-800' : 'bg-white'
+              }`}
+            >
+              <img
+                src={`http://localhost:5000/images/${product.image}`}
+                alt={product.name}
+                className="w-full h-48 object-cover mb-4 rounded-lg"
+              />
               <div className="mb-4">
                 <h3 className={`text-lg font-semibold mb-2 ${
                   isDark ? 'text-gray-200' : 'text-gray-800'
@@ -165,14 +180,7 @@ const HomePage = () => {
                   ${product.price}
                 </p>
               </div>
-              
-              <button
-                onClick={() => addToCartHandle(product)}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors font-medium"
-              >
-                Add to Cart
-              </button>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -190,7 +198,7 @@ const HomePage = () => {
           </div>
         )}
 
-        {!search && featuredProducts.length > 0 && (
+        {!search && oneProductPerCategory.length > 0 && (
           <div className="text-center mt-8">
             <Link
               to="/all-products"
@@ -225,7 +233,7 @@ const HomePage = () => {
               Browse Products
             </Link>
             <Link
-              to="/Cart"
+              to="/cart"
               className="bg-gray-800 hover:bg-gray-900 text-white px-8 py-3 rounded-lg font-medium transition-colors"
             >
               View Cart
