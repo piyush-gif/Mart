@@ -40,7 +40,7 @@ const ProductList = ({ category }) => {
           .map(product => (
             <Link
               key={product._id}
-              to={`/product/${product._id}`}
+              to={`/products/${product._id}`}
               className="no-underline"
             >
               <div className={`rounded-lg shadow p-6 flex flex-col items-start hover:shadow-lg transition cursor-pointer ${
