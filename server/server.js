@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-app.use('/images', express.static(path.join(process.cwd(), 'server/uploads')));
+app.use('/images', express.static(path.join(process.cwd(), '/uploads')));
 
 mongoose
   .connect(uri)
