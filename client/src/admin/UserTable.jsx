@@ -7,26 +7,33 @@ const UserTable = ({ users, setUsers, setError }) => {
 
   const handleEditClick = (user) => {
     setEditingId(user._id);
-    setEditedUser({ email: user.email, role: user.role?.join(", ") });
+    setEditedUser({ email: user.email, role: user.role?.join(", ") || "" });
+  };
+
+  const handleChange = (field, value) => {
+    setEditedUser(prev => ({ ...prev, [field]: value }));
   };
 
   const handleSave = async () => {
+    const { email, role } = editedUser;
+    if (!email || !role) return alert("Email and role are required");
+
     try {
       const res = await authFetch(`http://localhost:5000/users/${editingId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: editedUser.email,
-          role: editedUser.role.split(",").map((r) => r.trim()),
+          email,
+          role: role.split(",").map(r => r.trim()),
         }),
       });
 
       if (!res.ok) throw new Error("Failed to update user");
 
-      setUsers((prev) =>
-        prev.map((user) =>
+      setUsers(prev =>
+        prev.map(user =>
           user._id === editingId
-            ? { ...user, ...editedUser, role: editedUser.role.split(",").map((r) => r.trim()) }
+            ? { ...user, email, role: role.split(",").map(r => r.trim()) }
             : user
         )
       );
@@ -39,6 +46,7 @@ const UserTable = ({ users, setUsers, setError }) => {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this user?")) return;
+
     try {
       const res = await authFetch(`http://localhost:5000/users/${id}`, {
         method: "DELETE",
@@ -46,7 +54,7 @@ const UserTable = ({ users, setUsers, setError }) => {
 
       if (!res.ok) throw new Error("Failed to delete user");
 
-      setUsers((prev) => prev.filter((user) => user._id !== id));
+      setUsers(prev => prev.filter(user => user._id !== id));
       setError(null);
     } catch (err) {
       setError(err.message);
@@ -54,50 +62,49 @@ const UserTable = ({ users, setUsers, setError }) => {
   };
 
   return (
-    <div className="overflow-x-auto bg-gray-800 shadow rounded p-4">
-      <table className="min-w-full">
+    <div className="overflow-x-auto bg-gray-800 shadow rounded-md p-4">
+      <table className="min-w-full text-sm">
         <thead>
-          <tr className="bg-gray-700">
-            <th className="p-2 border border-gray-600 text-gray-200">Email</th>
-            <th className="p-2 border border-gray-600 text-gray-200">Role</th>
-            <th className="p-2 border border-gray-600 text-gray-200">Cart</th>
-            <th className="p-2 border border-gray-600 text-gray-200">Actions</th>
+          <tr className="bg-gray-700 text-gray-200">
+            <th className="p-3 border border-gray-600 text-left">Email</th>
+            <th className="p-3 border border-gray-600 text-left">Role</th>
+            <th className="p-3 border border-gray-600 text-left">Cart</th>
+            <th className="p-3 border border-gray-600 text-left">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={user._id} className="hover:bg-gray-700 text-gray-200">
-              <td className="p-2 border border-gray-600">
+          {users.map(user => (
+            <tr key={user._id} className="border-t border-gray-700 hover:bg-gray-700 text-gray-100">
+              <td className="p-2 align-top">
                 {editingId === user._id ? (
                   <input
                     type="email"
                     value={editedUser.email}
-                    onChange={(e) =>
-                      setEditedUser({ ...editedUser, email: e.target.value })
-                    }
-                    className="w-full p-1 border rounded bg-gray-700 text-gray-200 border-gray-500 focus:border-blue-500 focus:outline-none"
+                    onChange={(e) => handleChange("email", e.target.value)}
+                    className="w-full p-1 rounded bg-gray-700 border border-gray-500 focus:outline-none focus:border-blue-500"
                   />
                 ) : (
                   user.email
                 )}
               </td>
-              <td className="p-2 border border-gray-600">
+
+              <td className="p-2 align-top">
                 {editingId === user._id ? (
                   <input
                     type="text"
                     value={editedUser.role}
-                    onChange={(e) =>
-                      setEditedUser({ ...editedUser, role: e.target.value })
-                    }
-                    className="w-full p-1 border rounded bg-gray-700 text-gray-200 border-gray-500 focus:border-blue-500 focus:outline-none"
+                    onChange={(e) => handleChange("role", e.target.value)}
+                    className="w-full p-1 rounded bg-gray-700 border border-gray-500 focus:outline-none focus:border-blue-500"
+                    placeholder="e.g. admin, user"
                   />
                 ) : (
-                  user.role?.join(", ")
+                  user.role?.join(", ") || "-"
                 )}
               </td>
-              <td className="p-2 border border-gray-600 text-xs">
-                {user.cart && user.cart.length > 0 ? (
-                  <ul>
+
+              <td className="p-2 align-top text-xs text-gray-300">
+                {user.cart?.length > 0 ? (
+                  <ul className="list-disc pl-4">
                     {user.cart.map((item, idx) => (
                       <li key={idx}>
                         {item.name} (x{item.quantity})
@@ -108,9 +115,10 @@ const UserTable = ({ users, setUsers, setError }) => {
                   <span className="text-gray-500">Empty</span>
                 )}
               </td>
-              <td className="p-2 border border-gray-600 flex gap-2">
+
+              <td className="p-2 align-top">
                 {editingId === user._id ? (
-                  <>
+                  <div className="flex gap-2">
                     <button
                       onClick={handleSave}
                       className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded transition-colors"
@@ -123,9 +131,9 @@ const UserTable = ({ users, setUsers, setError }) => {
                     >
                       Cancel
                     </button>
-                  </>
+                  </div>
                 ) : (
-                  <>
+                  <div className="flex gap-2">
                     <button
                       onClick={() => handleEditClick(user)}
                       className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded transition-colors"
@@ -138,7 +146,7 @@ const UserTable = ({ users, setUsers, setError }) => {
                     >
                       Delete
                     </button>
-                  </>
+                  </div>
                 )}
               </td>
             </tr>
