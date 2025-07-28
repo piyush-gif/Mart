@@ -7,7 +7,7 @@ import cors from "cors";
 import Product from "./model/Product.js";
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
-
+import esewaRoutes from "./routes/esewaRoutes.js";
 import User from "./model/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -20,8 +20,8 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-app.use('/images', express.static(path.join(process.cwd(), '/uploads')));
-
+app.use("/images", express.static(path.join(process.cwd(), "/uploads")));
+app.use("/esewa", esewaRoutes);
 mongoose
   .connect(uri)
   .then(() => console.log("Mongodb connected"))
@@ -193,7 +193,7 @@ app.use("/users", userRoutes);
 app.get("/user-data", logger, auth, async (req, res) => {
   try {
     console.log("User-data endpoint hit by:", req.user);
-    
+
     // Get current user's data (for both admin and regular users)
     const user = await User.findById(req.user.userId).select("-password");
     if (!user) return res.status(404).json({ message: "User not found" });
