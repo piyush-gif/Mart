@@ -20,11 +20,8 @@ const CheckoutPage = () => {
     city: '',
     state: '',
     zipCode: '',
-    cardNumber: '',
-    cardName: '',
-    expiryDate: '',
-    cvv: ''
   });
+
 
   useEffect(() => {
     if (cartItems) {
@@ -46,23 +43,36 @@ const CheckoutPage = () => {
     setLoading(true);
 
     try {
-      // Simulate order processing
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Clear cart after successful order
-      setCartItems([]);
-      setCartCount(0);
-      
-      // Navigate to success page or show success message
-      alert('Order placed successfully!');
-      navigate('/');
+      const response = await authFetch('/esewa/initiate', {
+        method: 'POST',
+        body: JSON.stringify({ totalAmount: finalTotal }),
+      });
+
+      const { esewaFormData } = await response.json();
+
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://rc-epay.esewa.com.np/api/epay/main';
+
+      for (const key in esewaFormData) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = esewaFormData[key];
+        form.appendChild(input);
+      }
+
+      document.body.appendChild(form);
+      form.submit();
     } catch (error) {
-      console.error('Order failed:', error);
-      alert('Order failed. Please try again.');
+      console.error('eSewa error:', error);
+      alert('Failed to initiate eSewa payment.');
     } finally {
       setLoading(false);
     }
   };
+
+
 
   const finalTotal = total + 5.99 + (total * 0.08);
 
@@ -251,10 +261,6 @@ const CheckoutPage = () => {
               </div>
 
               <hr className={`my-6 ${isDark ? 'border-gray-600' : 'border-gray-200'}`} />
-              
-              <h3 className={`text-xl font-semibold mb-4 ${
-                isDark ? 'text-gray-200' : 'text-gray-800'
-              }`}>Payment Information</h3>
               
               <div>
                 <label className={`block text-sm font-medium mb-1 ${
