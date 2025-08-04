@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { authFetch } from "../utils/authFetch";
+import { useTheme } from "../contexts/ThemeContext";
 
 const ProductForm = ({ products, setProducts, setError }) => {
   const defaultProduct = {
     name: "", price: "", category: "", description: "",
     stock: "", rating: "", reviewCount: "", isActive: true, image: ""
   };
+  const { isDark } = useTheme();
 
   const [product, setProduct] = useState(defaultProduct);
   const [loading, setLoading] = useState(false);
@@ -107,31 +109,31 @@ const ProductForm = ({ products, setProducts, setError }) => {
   };
 
   return (
-    <form onSubmit={handleCreate} className="bg-gray-800 p-4 shadow rounded mb-6">
+    <form onSubmit={handleCreate} className={`${isDark ? 'bg-black' : 'bg-white'} p-4 shadow rounded mb-6`}>
       {/* Form Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <input type="text" required placeholder="Product Name"
           value={product.name} onChange={(e) => handleChange(setProduct, 'name', e.target.value)}
-          className="p-2 border rounded bg-gray-700 text-gray-200 border-gray-600 focus:outline-none focus:border-blue-500 placeholder-gray-400"
+          className={`p-2 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700 focus:outline-none focus:border-gray-400 placeholder-gray-400' : 'bg-white text-black border-gray-300 focus:outline-none focus:border-gray-500 placeholder-gray-400'}`}
         />
         <input type="number" required placeholder="Price"
           value={product.price} onChange={(e) => handleChange(setProduct, 'price', e.target.value)}
-          className="p-2 border rounded bg-gray-700 text-gray-200 border-gray-600 focus:outline-none focus:border-blue-500 placeholder-gray-400"
+          className={`p-2 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700 focus:outline-none focus:border-gray-400 placeholder-gray-400' : 'bg-white text-black border-gray-300 focus:outline-none focus:border-gray-500 placeholder-gray-400'}`}
         />
         <select required
           value={product.category} onChange={(e) => handleChange(setProduct, 'category', e.target.value)}
-          className="p-2 border rounded bg-gray-700 text-gray-200 border-gray-600 focus:outline-none focus:border-blue-500"
+          className={`p-2 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700 focus:outline-none focus:border-gray-400' : 'bg-white text-black border-gray-300 focus:outline-none focus:border-gray-500'}`}
         >
           <option value="">Select Category</option>
           {categories.map((c) => <option key={c} value={c}>{c}</option>)}
         </select>
         <input type="number" required placeholder="Stock"
           value={product.stock} onChange={(e) => handleChange(setProduct, 'stock', e.target.value)}
-          className="p-2 border rounded bg-gray-700 text-gray-200 border-gray-600 focus:outline-none focus:border-blue-500 placeholder-gray-400"
+          className={`p-2 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700 focus:outline-none focus:border-gray-400 placeholder-gray-400' : 'bg-white text-black border-gray-300 focus:outline-none focus:border-gray-500 placeholder-gray-400'}`}
         />
         <input type="text" required placeholder="Image filename (e.g. apple.jpg)"
           value={product.image} onChange={(e) => handleChange(setProduct, 'image', e.target.value)}
-          className="p-2 border rounded bg-gray-700 text-gray-200 border-gray-600 focus:outline-none focus:border-blue-500 placeholder-gray-400"
+          className={`p-2 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700 focus:outline-none focus:border-gray-400 placeholder-gray-400' : 'bg-white text-black border-gray-300 focus:outline-none focus:border-gray-500 placeholder-gray-400'}`}
         />
       </div>
 
@@ -139,13 +141,13 @@ const ProductForm = ({ products, setProducts, setError }) => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
         <input type="number" step="0.1" min="0" max="5" placeholder="Rating (0-5)"
           value={product.rating} onChange={(e) => handleChange(setProduct, 'rating', e.target.value)}
-          className="p-2 border rounded bg-gray-700 text-gray-200 border-gray-600 focus:outline-none focus:border-blue-500 placeholder-gray-400"
+          className={`p-2 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700 focus:outline-none focus:border-gray-400 placeholder-gray-400' : 'bg-white text-black border-gray-300 focus:outline-none focus:border-gray-500 placeholder-gray-400'}`}
         />
         <input type="number" placeholder="Review Count"
           value={product.reviewCount} onChange={(e) => handleChange(setProduct, 'reviewCount', e.target.value)}
-          className="p-2 border rounded bg-gray-700 text-gray-200 border-gray-600 focus:outline-none focus:border-blue-500 placeholder-gray-400"
+          className={`p-2 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700 focus:outline-none focus:border-gray-400 placeholder-gray-400' : 'bg-white text-black border-gray-300 focus:outline-none focus:border-gray-500 placeholder-gray-400'}`}
         />
-        <label className="flex items-center text-gray-200">
+        <label className={`${isDark ? 'text-white' : 'text-black'} flex items-center`}>
           <input type="checkbox" checked={product.isActive}
             onChange={(e) => handleChange(setProduct, 'isActive', e.target.checked)}
             className="mr-2"
@@ -157,61 +159,61 @@ const ProductForm = ({ products, setProducts, setError }) => {
       <div className="mt-4">
         <textarea placeholder="Product Description" rows="3"
           value={product.description} onChange={(e) => handleChange(setProduct, 'description', e.target.value)}
-          className="w-full p-2 border rounded bg-gray-700 text-gray-200 border-gray-600 focus:outline-none focus:border-blue-500 placeholder-gray-400"
+          className={`w-full p-2 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700 focus:outline-none focus:border-gray-400 placeholder-gray-400' : 'bg-white text-black border-gray-300 focus:outline-none focus:border-gray-500 placeholder-gray-400'}`}
         />
       </div>
 
       <button type="submit" disabled={loading}
-        className="mt-4 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 text-white px-4 py-2 rounded transition-colors"
+        className={`mt-4 ${isDark ? 'bg-black hover:bg-gray-800 disabled:bg-gray-600 text-white' : 'bg-black hover:bg-gray-200 disabled:bg-gray-400 text-white'} px-4 py-2 rounded transition-colors`}
       >
         {loading ? "Adding..." : "Add Product"}
       </button>
 
       {/* Product Display */}
       <div className="mt-6">
-        <h2 className="text-xl font-semibold mb-2 text-gray-200">Existing Products</h2>
+        <h2 className={`${isDark ? 'text-white' : 'text-black'} text-xl font-semibold mb-2`}>Existing Products</h2>
         {products.length === 0 ? (
-          <p className="text-gray-400">No products available.</p>
+          <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>No products available.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {categories.map(category => {
               const catProducts = products.filter(p => p.category === category);
               return (
-                <div key={category} className="bg-gray-700 rounded p-4">
-                  <h3 className="text-lg font-semibold mb-3 text-blue-400 border-b border-gray-600 pb-2">
+                <div key={category} className={`${isDark ? 'bg-gray-900' : 'bg-gray-100'} rounded p-4`}>
+                  <h3 className={`${isDark ? 'text-white' : 'text-black'} text-lg font-semibold mb-3 border-b ${isDark ? 'border-gray-700' : 'border-gray-300'} pb-2`}>
                     {category} ({catProducts.length})
                   </h3>
                   <div className="space-y-2">
                     {catProducts.map(p => (
-                      <div key={p._id} className="p-3 border border-gray-600 rounded bg-gray-800">
+                      <div key={p._id} className={`p-3 border rounded ${isDark ? 'border-gray-700 bg-black' : 'border-gray-300 bg-white'}`}>
                         <img src={`http://localhost:5000/images/${p.image}`} alt={p.name} className="w-full h-32 object-cover mb-2 rounded" />
                         {editingId === p._id ? (
                           <div className="space-y-2 text-sm">
-                            <input type="text" value={editedProduct.name} onChange={(e) => handleChange(setEditedProduct, 'name', e.target.value)} className="w-full p-1 border rounded bg-gray-600 text-gray-200" placeholder="Product name" />
+                            <input type="text" value={editedProduct.name} onChange={(e) => handleChange(setEditedProduct, 'name', e.target.value)} className={`w-full p-1 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700' : 'bg-white text-black border-gray-300'}`} placeholder="Product name" />
                             <div className="grid grid-cols-2 gap-2">
-                              <input type="number" value={editedProduct.price} onChange={(e) => handleChange(setEditedProduct, 'price', e.target.value)} className="p-1 border rounded bg-gray-600 text-gray-200" placeholder="Price" />
-                              <input type="number" value={editedProduct.stock} onChange={(e) => handleChange(setEditedProduct, 'stock', e.target.value)} className="p-1 border rounded bg-gray-600 text-gray-200" placeholder="Stock" />
+                              <input type="number" value={editedProduct.price} onChange={(e) => handleChange(setEditedProduct, 'price', e.target.value)} className={`p-1 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700' : 'bg-white text-black border-gray-300'}`} placeholder="Price" />
+                              <input type="number" value={editedProduct.stock} onChange={(e) => handleChange(setEditedProduct, 'stock', e.target.value)} className={`p-1 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700' : 'bg-white text-black border-gray-300'}`} placeholder="Stock" />
                             </div>
-                            <select value={editedProduct.category} onChange={(e) => handleChange(setEditedProduct, 'category', e.target.value)} className="w-full p-1 border rounded bg-gray-600 text-gray-200">
+                            <select value={editedProduct.category} onChange={(e) => handleChange(setEditedProduct, 'category', e.target.value)} className={`w-full p-1 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700' : 'bg-white text-black border-gray-300'}`}>
                               {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
                             </select>
-                            <input type="text" value={editedProduct.image} onChange={(e) => handleChange(setEditedProduct, 'image', e.target.value)} className="w-full p-1 border rounded bg-gray-600 text-gray-200" placeholder="Image filename" />
+                            <input type="text" value={editedProduct.image} onChange={(e) => handleChange(setEditedProduct, 'image', e.target.value)} className={`w-full p-1 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700' : 'bg-white text-black border-gray-300'}`} placeholder="Image filename" />
                             <div className="grid grid-cols-2 gap-2">
-                              <input type="number" step="0.1" value={editedProduct.rating} onChange={(e) => handleChange(setEditedProduct, 'rating', e.target.value)} className="p-1 border rounded bg-gray-600 text-gray-200" placeholder="Rating" />
-                              <input type="number" value={editedProduct.reviewCount} onChange={(e) => handleChange(setEditedProduct, 'reviewCount', e.target.value)} className="p-1 border rounded bg-gray-600 text-gray-200" placeholder="Reviews" />
+                              <input type="number" step="0.1" value={editedProduct.rating} onChange={(e) => handleChange(setEditedProduct, 'rating', e.target.value)} className={`p-1 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700' : 'bg-white text-black border-gray-300'}`} placeholder="Rating" />
+                              <input type="number" value={editedProduct.reviewCount} onChange={(e) => handleChange(setEditedProduct, 'reviewCount', e.target.value)} className={`p-1 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700' : 'bg-white text-black border-gray-300'}`} placeholder="Reviews" />
                             </div>
-                            <textarea value={editedProduct.description} onChange={(e) => handleChange(setEditedProduct, 'description', e.target.value)} rows="2" className="w-full p-1 border rounded bg-gray-600 text-gray-200" placeholder="Description" />
-                            <label className="flex items-center text-gray-200">
+                            <textarea value={editedProduct.description} onChange={(e) => handleChange(setEditedProduct, 'description', e.target.value)} rows="2" className={`w-full p-1 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700' : 'bg-white text-black border-gray-300'}`} placeholder="Description" />
+                            <label className={`${isDark ? 'text-white' : 'text-black'} flex items-center`}>
                               <input type="checkbox" checked={editedProduct.isActive} onChange={(e) => handleChange(setEditedProduct, 'isActive', e.target.checked)} className="mr-2" />
                               Active
                             </label>
                             <div className="flex gap-2">
-                              <button onClick={handleSave} className="bg-green-600 hover:bg-green-700 text-white px-2 py-1 rounded text-xs">Save</button>
-                              <button onClick={() => setEditingId(null)} className="bg-gray-600 hover:bg-gray-700 text-white px-2 py-1 rounded text-xs">Cancel</button>
+                              <button onClick={handleSave} className={`px-2 py-1 rounded text-xs ${isDark ? 'bg-black hover:bg-gray-800 text-white' : 'bg-black hover:bg-gray-200 text-white'}`}>Save</button>
+                              <button onClick={() => setEditingId(null)} className={`px-2 py-1 rounded text-xs ${isDark ? 'bg-gray-700 hover:bg-gray-800 text-white' : 'bg-gray-200 hover:bg-gray-300 text-black'}`}>Cancel</button>
                             </div>
                           </div>
                         ) : (
-                          <div className="text-sm text-gray-300">
+                          <div className={`text-sm ${isDark ? 'text-white' : 'text-black'}`}>
                             <p className="font-semibold">{p.name}</p>
                             <p>${p.price}</p>
                             <p className="text-xs">Stock: {p.stock}</p>
@@ -219,8 +221,8 @@ const ProductForm = ({ products, setProducts, setError }) => {
                             <p className="text-xs">Status: {p.isActive ? 'Active' : 'Inactive'}</p>
                             {p.description && <p className="text-xs text-gray-400 mt-1">{p.description}</p>}
                             <div className="flex gap-2 mt-2">
-                              <button onClick={() => handleEditClick(p)} className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded text-xs">Edit</button>
-                              <button onClick={() => handleDelete(p._id)} className="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs">Delete</button>
+                              <button onClick={() => handleEditClick(p)} className={`px-2 py-1 rounded text-xs ${isDark ? 'bg-black hover:bg-gray-800 text-white' : 'bg-black hover:bg-gray-200 text-white'}`}>Edit</button>
+                              <button onClick={() => handleDelete(p._id)} className={`px-2 py-1 rounded text-xs ${isDark ? 'bg-gray-700 hover:bg-gray-800 text-white' : 'bg-gray-200 hover:bg-gray-300 text-black'}`}>Delete</button>
                             </div>
                           </div>
                         )}

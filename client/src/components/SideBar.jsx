@@ -17,11 +17,11 @@ const SideBar = ({ isOpen, onClose }) => {
       <aside
         className={`fixed top-0 left-0 w-64 h-full shadow-lg p-6 flex flex-col gap-4 z-20 transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } ${isDark ? 'bg-gray-900' : 'bg-white'}`}
+        } ${isDark ? 'bg-black' : 'bg-white'}`}
       >
         <button
-          className={`self-end mb-4 hover:text-gray-700 transition-colors ${
-            isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-black'
+          className={`self-end mb-4 transition-colors ${
+            isDark ? 'text-white hover:text-gray-200' : 'text-black hover:text-gray-700'
           }`}
           onClick={onClose}
         >
@@ -32,8 +32,8 @@ const SideBar = ({ isOpen, onClose }) => {
             to="/level1" 
             className={`px-4 py-2 rounded transition-colors font-medium ${
               isDark 
-                ? 'text-gray-200 hover:bg-gray-800 hover:text-white' 
-                : 'text-gray-800 hover:bg-gray-200 hover:text-black'
+                ? 'text-white hover:bg-gray-800 hover:text-gray-200' 
+                : 'text-black hover:bg-gray-200 hover:text-gray-700'
             }`}
           >
              Groceries
@@ -42,8 +42,8 @@ const SideBar = ({ isOpen, onClose }) => {
             to="/level2" 
             className={`px-4 py-2 rounded transition-colors font-medium ${
               isDark 
-                ? 'text-gray-200 hover:bg-gray-800 hover:text-white' 
-                : 'text-gray-800 hover:bg-gray-200 hover:text-black'
+                ? 'text-white hover:bg-gray-800 hover:text-gray-200' 
+                : 'text-black hover:bg-gray-200 hover:text-gray-700'
             }`}
           >
              Utensils / Toys
@@ -52,8 +52,8 @@ const SideBar = ({ isOpen, onClose }) => {
             to="/level3" 
             className={`px-4 py-2 rounded transition-colors font-medium ${
               isDark 
-                ? 'text-gray-200 hover:bg-gray-800 hover:text-white' 
-                : 'text-gray-800 hover:bg-gray-200 hover:text-black'
+                ? 'text-white hover:bg-gray-800 hover:text-gray-200' 
+                : 'text-black hover:bg-gray-200 hover:text-gray-700'
             }`}
           >
              Clothes & Fashion
@@ -62,8 +62,8 @@ const SideBar = ({ isOpen, onClose }) => {
             to="/level4" 
             className={`px-4 py-2 rounded transition-colors font-medium ${
               isDark 
-                ? 'text-gray-200 hover:bg-gray-800 hover:text-white' 
-                : 'text-gray-800 hover:bg-gray-200 hover:text-black'
+                ? 'text-white hover:bg-gray-800 hover:text-gray-200' 
+                : 'text-black hover:bg-gray-200 hover:text-gray-700'
             }`}
           >
              Electronic
@@ -72,8 +72,8 @@ const SideBar = ({ isOpen, onClose }) => {
             to="/level5" 
             className={`px-4 py-2 rounded transition-colors font-medium ${
               isDark 
-                ? 'text-gray-200 hover:bg-gray-800 hover:text-white' 
-                : 'text-gray-800 hover:bg-gray-200 hover:text-black'
+                ? 'text-white hover:bg-gray-800 hover:text-gray-200' 
+                : 'text-black hover:bg-gray-200 hover:text-gray-700'
             }`}
           >
             Household

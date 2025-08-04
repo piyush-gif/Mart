@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { authFetch } from "../utils/authFetch";
+import { useTheme } from "../contexts/ThemeContext";
 
 const UserTable = ({ users, setUsers, setError }) => {
   const [editingId, setEditingId] = useState(null);
   const [editedUser, setEditedUser] = useState({ email: "", role: "" });
+  const { isDark } = useTheme();
 
   const handleEditClick = (user) => {
     setEditingId(user._id);
@@ -62,26 +64,26 @@ const UserTable = ({ users, setUsers, setError }) => {
   };
 
   return (
-    <div className="overflow-x-auto bg-gray-800 shadow rounded-md p-4">
+    <div className={`overflow-x-auto shadow rounded-md p-4 ${isDark ? 'bg-black' : 'bg-white'}`}>
       <table className="min-w-full text-sm">
         <thead>
-          <tr className="bg-gray-700 text-gray-200">
-            <th className="p-3 border border-gray-600 text-left">Email</th>
-            <th className="p-3 border border-gray-600 text-left">Role</th>
-            <th className="p-3 border border-gray-600 text-left">Cart</th>
-            <th className="p-3 border border-gray-600 text-left">Actions</th>
+          <tr className={`${isDark ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}`}>
+            <th className={`p-3 border ${isDark ? 'border-gray-800 text-left' : 'border-gray-300 text-left'}`}>Email</th>
+            <th className={`p-3 border ${isDark ? 'border-gray-800 text-left' : 'border-gray-300 text-left'}`}>Role</th>
+            <th className={`p-3 border ${isDark ? 'border-gray-800 text-left' : 'border-gray-300 text-left'}`}>Cart</th>
+            <th className={`p-3 border ${isDark ? 'border-gray-800 text-left' : 'border-gray-300 text-left'}`}>Actions</th>
           </tr>
         </thead>
         <tbody>
           {users.map(user => (
-            <tr key={user._id} className="border-t border-gray-700 hover:bg-gray-700 text-gray-100">
+            <tr key={user._id} className={`${isDark ? 'border-t border-gray-800 hover:bg-gray-800 text-white' : 'border-t border-gray-200 hover:bg-gray-100 text-black'}`}>
               <td className="p-2 align-top">
                 {editingId === user._id ? (
                   <input
                     type="email"
                     value={editedUser.email}
                     onChange={(e) => handleChange("email", e.target.value)}
-                    className="w-full p-1 rounded bg-gray-700 border border-gray-500 focus:outline-none focus:border-blue-500"
+                    className={`w-full p-1 rounded ${isDark ? 'bg-gray-900 border border-gray-700 focus:outline-none focus:border-gray-400 text-white' : 'bg-white border border-gray-300 focus:outline-none focus:border-gray-500 text-black'}`}
                   />
                 ) : (
                   user.email
@@ -94,7 +96,7 @@ const UserTable = ({ users, setUsers, setError }) => {
                     type="text"
                     value={editedUser.role}
                     onChange={(e) => handleChange("role", e.target.value)}
-                    className="w-full p-1 rounded bg-gray-700 border border-gray-500 focus:outline-none focus:border-blue-500"
+                    className={`w-full p-1 rounded ${isDark ? 'bg-gray-900 border border-gray-700 focus:outline-none focus:border-gray-400 text-white' : 'bg-white border border-gray-300 focus:outline-none focus:border-gray-500 text-black'}`}
                     placeholder="e.g. admin, user"
                   />
                 ) : (
@@ -112,7 +114,7 @@ const UserTable = ({ users, setUsers, setError }) => {
                     ))}
                   </ul>
                 ) : (
-                  <span className="text-gray-500">Empty</span>
+                  <span className={`${isDark ? 'text-gray-500' : 'text-gray-400'}`}>Empty</span>
                 )}
               </td>
 
@@ -121,13 +123,13 @@ const UserTable = ({ users, setUsers, setError }) => {
                   <div className="flex gap-2">
                     <button
                       onClick={handleSave}
-                      className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded transition-colors"
+                      className={`px-3 py-1 rounded transition-colors ${isDark ? 'bg-black hover:bg-gray-800 text-white' : 'bg-black hover:bg-gray-200 text-white'}`}
                     >
                       Save
                     </button>
                     <button
                       onClick={() => setEditingId(null)}
-                      className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded transition-colors"
+                      className={`px-3 py-1 rounded transition-colors ${isDark ? 'bg-gray-700 hover:bg-gray-800 text-white' : 'bg-gray-200 hover:bg-gray-300 text-black'}`}
                     >
                       Cancel
                     </button>
@@ -136,13 +138,13 @@ const UserTable = ({ users, setUsers, setError }) => {
                   <div className="flex gap-2">
                     <button
                       onClick={() => handleEditClick(user)}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded transition-colors"
+                      className={`px-3 py-1 rounded transition-colors ${isDark ? 'bg-black hover:bg-gray-800 text-white' : 'bg-black hover:bg-gray-200 text-white'}`}
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(user._id)}
-                      className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded transition-colors"
+                      className={`px-3 py-1 rounded transition-colors ${isDark ? 'bg-gray-700 hover:bg-gray-800 text-white' : 'bg-gray-200 hover:bg-gray-300 text-black'}`}
                     >
                       Delete
                     </button>
