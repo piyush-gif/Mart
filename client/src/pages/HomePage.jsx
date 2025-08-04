@@ -60,25 +60,25 @@ const HomePage = () => {
   }
 
   return (
-    <div className={`min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <div className={`min-h-screen ${isDark ? 'bg-gray-900' : 'bg-white'} transition-colors duration-300`}>
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
-        <div className="max-w-6xl mx-auto px-4">
+      <div className="bg-gradient-to-r from-blue-700 to-indigo-600 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
               Welcome to MART
             </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Your one-stop shop for everything you need
+            <p className="text-lg sm:text-xl lg:text-2xl mb-10 opacity-90 leading-relaxed">
+              Your premium destination for quality shopping
             </p>
             
             {/* Search Bar */}
-            <div className="max-w-md mx-auto">
+            <div className="max-w-lg mx-auto">
               <input
-                className="w-full px-6 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
+                className="w-full px-6 py-4 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50 bg-white/90 shadow-lg transition-all duration-300"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search products..."
+                placeholder="Search for products..."
               />
             </div>
           </div>
@@ -86,26 +86,26 @@ const HomePage = () => {
       </div>
 
       {/* Category Navigation */}
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <h2 className={`text-3xl font-bold text-center mb-8 ${
-          isDark ? 'text-white' : 'text-gray-800'
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className={`text-3xl sm:text-4xl font-bold text-center mb-12 ${
+          isDark ? 'text-white' : 'text-gray-900'
         }`}>
           Shop by Category
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
           {categories.map((category) => (
             <Link
               key={category.name}
               to={category.path}
-              className={`p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center group ${
+              className={`p-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-center group ${
                 isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'
               }`}
             >
-              <div className="text-4xl mb-3">{category.icon}</div>
-              <h3 className={`font-semibold transition-colors ${
+              <div className="text-5xl mb-4">{category.icon}</div>
+              <h3 className={`text-lg font-semibold transition-colors ${
                 isDark 
-                  ? 'text-gray-200 group-hover:text-blue-400' 
-                  : 'text-gray-800 group-hover:text-blue-600'
+                  ? 'text-gray-100 group-hover:text-blue-400' 
+                  : 'text-gray-900 group-hover:text-blue-600'
               }`}>
                 {category.name}
               </h3>
@@ -115,64 +115,64 @@ const HomePage = () => {
       </div>
 
       {/* Explore One Product From Each Category */}
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <h2 className={`text-3xl font-bold text-center mb-8 ${
-          isDark ? 'text-white' : 'text-gray-800'
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className={`text-3xl sm:text-4xl font-bold text-center mb-12 ${
+          isDark ? 'text-white' : 'text-gray-900'
         }`}>
-          Explore One Product From Each Category
+          Explore Our Curated Selection
         </h2>
         
         {error && (
-          <div className="text-center text-red-600 mb-8">
+          <div className="text-center text-red-500 font-medium mb-8">
             {error.message}
           </div>
         )}
 
         {!productData && !error && (
-          <div className={`text-center mb-8 ${
-            isDark ? 'text-gray-400' : 'text-gray-600'
+          <div className={`text-center mb-8 font-medium text-lg ${
+            isDark ? 'text-gray-300' : 'text-gray-600'
           }`}>
             Loading products...
           </div>
         )}
 
         {search && (
-          <div className="mb-6">
-            <h3 className={`text-lg font-semibold mb-4 ${
-              isDark ? 'text-gray-300' : 'text-gray-700'
+          <div className="mb-8">
+            <h3 className={`text-xl font-semibold mb-6 ${
+              isDark ? 'text-gray-200' : 'text-gray-800'
             }`}>
               Search Results ({filteredProducts.length} products)
             </h3>
           </div>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {(search ? filteredProducts : oneProductPerCategory).map((product) => (
             <Link
               key={product._id}
               to={`/products/${product._id}`}
-              className={`rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 block ${
+              className={`rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 p-6 block ${
                 isDark ? 'bg-gray-800' : 'bg-white'
               }`}
             >
               <img
                 src={`http://localhost:5000/images/${product.image}`}
                 alt={product.name}
-                className="w-full h-48 object-cover mb-4 rounded-lg"
+                className="w-full h-56 object-cover mb-6 rounded-lg"
               />
               <div className="mb-4">
-                <h3 className={`text-lg font-semibold mb-2 ${
-                  isDark ? 'text-gray-200' : 'text-gray-800'
+                <h3 className={`text-xl font-semibold mb-3 ${
+                  isDark ? 'text-gray-100' : 'text-gray-900'
                 }`}>
                   {product.name}
                 </h3>
-                <p className={`text-sm mb-1 ${
-                  isDark ? 'text-gray-400' : 'text-gray-600'
+                <p className={`text-sm mb-2 ${
+                  isDark ? 'text-gray-300' : 'text-gray-600'
                 }`}>
                   Category: {product.category}
                 </p>
-                <p className={`text-sm mb-3 ${
-                  isDark ? 'text-gray-500' : 'text-gray-500'
+                <p className={`text-sm mb-4 ${
+                  isDark ? 'text-gray-400' : 'text-gray-500'
                 }`}>
                   Expires: {new Date(product.expirationDate).toLocaleDateString()}
                 </p>
@@ -185,13 +185,13 @@ const HomePage = () => {
         </div>
 
         {search && filteredProducts.length === 0 && (
-          <div className={`text-center py-8 ${
-            isDark ? 'text-gray-400' : 'text-gray-600'
+          <div className={`text-center py-12 ${
+            isDark ? 'text-gray-300' : 'text-gray-600'
           }`}>
-            <p className="text-lg">No products found matching "{search}"</p>
+            <p className="text-lg font-medium">No products found matching "{search}"</p>
             <button
               onClick={() => setSearch('')}
-              className="mt-4 text-blue-600 hover:text-blue-800 underline"
+              className="mt-4 text-blue-600 hover:text-blue-800 font-medium underline transition-colors"
             >
               Clear search
             </button>
@@ -199,10 +199,10 @@ const HomePage = () => {
         )}
 
         {!search && oneProductPerCategory.length > 0 && (
-          <div className="text-center mt-8">
+          <div className="text-center mt-12">
             <Link
               to="/all-products"
-              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-md hover:shadow-lg"
             >
               View All Products
             </Link>
@@ -211,30 +211,30 @@ const HomePage = () => {
       </div>
 
       {/* Call to Action */}
-      <div className={`py-16 ${
-        isDark ? 'bg-gray-800' : 'bg-gray-100'
-      }`}>
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className={`text-3xl font-bold mb-4 ${
-            isDark ? 'text-white' : 'text-gray-800'
+      <div className={`py-20 ${
+        isDark ? 'bg-gray-800' : 'bg-gray-50'
+      } transition-colors duration-300`}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className={`text-3xl sm:text-4xl font-bold mb-6 ${
+            isDark ? 'text-white' : 'text-gray-900'
           }`}>
             Ready to Start Shopping?
           </h2>
-          <p className={`text-lg mb-8 ${
-            isDark ? 'text-gray-300' : 'text-gray-600'
+          <p className={`text-lg sm:text-xl mb-10 ${
+            isDark ? 'text-gray-200' : 'text-gray-600'
           }`}>
-            Explore our wide range of products and find exactly what you need.
+            Discover our premium range of products tailored to your needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/level1"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-md hover:shadow-lg"
             >
               Browse Products
             </Link>
             <Link
               to="/cart"
-              className="bg-gray-800 hover:bg-gray-900 text-white px-8 py-3 rounded-lg font-medium transition-colors"
+              className="bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-md hover:shadow-lg"
             >
               View Cart
             </Link>
