@@ -1,10 +1,13 @@
 import  { useState } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
+import { UserPlus } from 'lucide-react';
 
 const CreateAccountPage = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const { isDark } = useTheme();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,6 +71,9 @@ const CreateAccountPage = () => {
   return (
     <div className={`min-h-screen flex items-center justify-center ${isDark ? 'bg-black' : 'bg-white'}`}>
       <div className={`max-w-md w-full p-8 rounded-lg shadow-lg ${isDark ? 'bg-black' : 'bg-white'}`}>
+        <div className="flex flex-col items-center mb-4">
+          <UserPlus size={40} className={`${isDark ? 'text-gray-300' : 'text-gray-700'}`} />
+        </div>
         <h2 className={`text-2xl font-bold mb-6 ${isDark ? 'text-white' : 'text-black'}`}>Create Account</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>

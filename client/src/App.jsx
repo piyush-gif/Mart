@@ -9,7 +9,7 @@ import Level2 from './pages/Level2.jsx';
 import Level3 from './pages/Level3.jsx';
 import Level4 from './pages/Level4.jsx';
 import Level5 from './pages/Level5.jsx';
-import Admin from './admin/Admin.jsx';
+import Admin from './admin/admin.jsx';
 import Settings from './pages/Settings.jsx';
 import AccountPage from './pages/AccountPage.jsx';
 import Cart from './pages/Cart.jsx';
