@@ -12,7 +12,7 @@ const AccountSidebar = ({ activeTab, setActiveTab }) => {
 
   return (
     <div className={`p-4 rounded-lg ${
-      isDark ? 'bg-gray-800' : 'bg-gray-100'
+      isDark ? 'bg-gray-900' : 'bg-gray-100'
     }`}>
       <ul>
         {navItems.map((item) => (
@@ -21,9 +21,9 @@ const AccountSidebar = ({ activeTab, setActiveTab }) => {
               onClick={() => setActiveTab(item.key)} 
               className={`w-full text-left p-2 rounded transition-colors ${
                 activeTab === item.key 
-                  ? 'bg-blue-500 text-white' 
+                  ? 'bg-black text-white' 
                   : isDark 
-                    ? 'hover:bg-gray-700 text-gray-200' 
+                    ? 'hover:bg-gray-800 text-gray-200' 
                     : 'hover:bg-gray-200 text-gray-800'
               }`}
             >

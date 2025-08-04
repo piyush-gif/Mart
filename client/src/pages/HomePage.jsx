@@ -88,7 +88,7 @@ const HomePage = () => {
       {/* Category Navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h2 className={`text-3xl sm:text-4xl font-bold text-center mb-12 ${
-          isDark ? 'text-white' : 'text-gray-900'
+          isDark ? 'text-white' : 'text-black'
         }`}>
           Shop by Category
         </h2>
@@ -98,14 +98,14 @@ const HomePage = () => {
               key={category.name}
               to={category.path}
               className={`p-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-center group ${
-                isDark ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'
+                isDark ? 'bg-black hover:bg-gray-900' : 'bg-white hover:bg-gray-100'
               }`}
             >
               <div className="text-5xl mb-4">{category.icon}</div>
               <h3 className={`text-lg font-semibold transition-colors ${
                 isDark 
-                  ? 'text-gray-100 group-hover:text-blue-400' 
-                  : 'text-gray-900 group-hover:text-blue-600'
+                  ? 'text-white group-hover:text-gray-400' 
+                  : 'text-black group-hover:text-gray-700'
               }`}>
                 {category.name}
               </h3>
@@ -117,7 +117,7 @@ const HomePage = () => {
       {/* Explore One Product From Each Category */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <h2 className={`text-3xl sm:text-4xl font-bold text-center mb-12 ${
-          isDark ? 'text-white' : 'text-gray-900'
+          isDark ? 'text-white' : 'text-black'
         }`}>
           Explore Our Curated Selection
         </h2>

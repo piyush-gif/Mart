@@ -82,12 +82,12 @@ const AllProducts = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {(search ? filteredProducts : productData || []).map((product) => (
             <div key={product._id} className={`rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 ${
-              isDark ? 'bg-gray-800' : 'bg-white'
+              isDark ? 'bg-black' : 'bg-white'
             }`}>
                <img src={`http://localhost:5000/images/${product.image}`} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-lg" />
               <div className="mb-4">
                 <h3 className={`text-lg font-semibold mb-2 ${
-                  isDark ? 'text-gray-200' : 'text-gray-800'
+                  isDark ? 'text-white' : 'text-black'
                 }`}>
                   {product.name}
                 </h3>
@@ -101,13 +101,13 @@ const AllProducts = () => {
                 }`}>
                   Expires: {new Date(product.expirationDate).toLocaleDateString()}
                 </p>
-                <p className="text-2xl font-bold text-blue-600">
+                <p className="text-2xl font-bold text-black">
                   ${product.price}
                 </p>
               </div>
               <button
                 onClick={() => addToCartHandle(product)}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors font-medium"
+                className="w-full bg-black hover:bg-gray-800 text-white py-2 px-4 rounded-lg transition-colors font-medium"
               >
                 Add to Cart
               </button>

@@ -61,27 +61,27 @@ const UserProfile = () => {
 
   return (
     <div className={`max-w-md mx-auto p-6 rounded-lg shadow-lg ${
-      isDark ? 'bg-gray-800' : 'bg-white'
+      isDark ? 'bg-black' : 'bg-white'
     }`}>
       <h2 className={`text-2xl font-bold mb-6 ${
-        isDark ? 'text-gray-200' : 'text-gray-800'
+        isDark ? 'text-white' : 'text-black'
       }`}>
         User Profile
       </h2>
       
       <div className="space-y-4">
         <div className={`p-4 rounded-lg border ${
-          isDark ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'
+          isDark ? 'bg-gray-900 border-gray-800' : 'bg-gray-100 border-gray-200'
         }`}>
           <div className="flex items-center mb-3">
             <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg ${
-              isDark ? 'bg-blue-600' : 'bg-blue-500'
+              isDark ? 'bg-black' : 'bg-gray-800'
             }`}>
               {user.username ? user.username.charAt(0).toUpperCase() : 'U'}
             </div>
             <div className="ml-4">
               <h3 className={`text-lg font-semibold ${
-                isDark ? 'text-gray-200' : 'text-gray-800'
+                isDark ? 'text-white' : 'text-black'
               }`}>
                 {user.username || 'User'}
               </h3>
@@ -96,7 +96,7 @@ const UserProfile = () => {
 
         <div className="space-y-3">
           <div className={`p-3 rounded border ${
-            isDark ? 'border-gray-600' : 'border-gray-200'
+            isDark ? 'border-gray-800' : 'border-gray-200'
           }`}>
             <label className={`block text-sm font-medium mb-1 ${
               isDark ? 'text-gray-300' : 'text-gray-700'
@@ -104,14 +104,14 @@ const UserProfile = () => {
               Username
             </label>
             <p className={`${
-              isDark ? 'text-gray-200' : 'text-gray-800'
+              isDark ? 'text-white' : 'text-black'
             }`}>
               {user.username || 'Not set'}
             </p>
           </div>
 
           <div className={`p-3 rounded border ${
-            isDark ? 'border-gray-600' : 'border-gray-200'
+            isDark ? 'border-gray-800' : 'border-gray-200'
           }`}>
             <label className={`block text-sm font-medium mb-1 ${
               isDark ? 'text-gray-300' : 'text-gray-700'
@@ -119,14 +119,14 @@ const UserProfile = () => {
               Email
             </label>
             <p className={`${
-              isDark ? 'text-gray-200' : 'text-gray-800'
+              isDark ? 'text-white' : 'text-black'
             }`}>
               {user.email || 'Not set'}
             </p>
           </div>
 
           <div className={`p-3 rounded border ${
-            isDark ? 'border-gray-600' : 'border-gray-200'
+            isDark ? 'border-gray-800' : 'border-gray-200'
           }`}>
             <label className={`block text-sm font-medium mb-1 ${
               isDark ? 'text-gray-300' : 'text-gray-700'
@@ -134,7 +134,7 @@ const UserProfile = () => {
               Account Type
             </label>
             <p className={`${
-              isDark ? 'text-gray-200' : 'text-gray-800'
+              isDark ? 'text-white' : 'text-black'
             }`}>
               {user.role ? user.role.join(', ') : 'User'}
             </p>
@@ -144,8 +144,8 @@ const UserProfile = () => {
         <div className="mt-6 pt-4 border-t border-gray-200">
           <button className={`w-full py-2 px-4 rounded-lg font-medium transition-colors ${
             isDark 
-              ? 'bg-blue-600 hover:bg-blue-700 text-white' 
-              : 'bg-blue-500 hover:bg-blue-600 text-white'
+              ? 'bg-black hover:bg-gray-800 text-white' 
+              : 'bg-black hover:bg-gray-800 text-white'
           }`}>
             Edit Profile
           </button>

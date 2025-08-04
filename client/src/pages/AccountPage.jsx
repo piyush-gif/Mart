@@ -24,10 +24,10 @@ const AccountPage = () => {
   };
 
   return (
-    <div className={`min-h-screen py-8 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <div className={`min-h-screen py-8 ${isDark ? 'bg-black' : 'bg-white'}`}>
       <div className="container mx-auto p-4">
         <h1 className={`text-2xl font-bold mb-4 ${
-          isDark ? 'text-gray-200' : 'text-gray-800'
+          isDark ? 'text-white' : 'text-black'
         }`}>My Account</h1>
         <div className="flex flex-col md:flex-row gap-8">
           <div className="w-full md:w-1/4">

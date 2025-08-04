@@ -78,19 +78,19 @@ const CheckoutPage = () => {
 
   if (!cartItems || cartItems.length === 0) {
     return (
-      <div className={`min-h-screen py-8 ${isDark ? 'bg-gray-900' : 'bg-gray-100'}`}>
+      <div className={`min-h-screen py-8 ${isDark ? 'bg-black' : 'bg-white'}`}>
         <div className={`max-w-2xl mx-auto rounded-lg shadow p-6 text-center ${
-          isDark ? 'bg-gray-800' : 'bg-white'
+          isDark ? 'bg-black' : 'bg-white'
         }`}>
           <h2 className={`text-2xl font-bold mb-4 ${
-            isDark ? 'text-gray-200' : 'text-gray-800'
+            isDark ? 'text-white' : 'text-black'
           }`}>Your cart is empty</h2>
           <p className={`mb-6 ${
             isDark ? 'text-gray-400' : 'text-gray-600'
           }`}>Add some items to your cart before checkout.</p>
           <button
             onClick={() => navigate('/')}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors"
+            className="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-lg transition-colors"
           >
             Continue Shopping
           </button>
@@ -100,19 +100,19 @@ const CheckoutPage = () => {
   }
 
   return (
-    <div className={`min-h-screen py-8 ${isDark ? 'bg-gray-900' : 'bg-gray-100'}`}>
+    <div className={`min-h-screen py-8 ${isDark ? 'bg-black' : 'bg-white'}`}>
       <div className="max-w-6xl mx-auto px-4">
         <h1 className={`text-3xl font-bold text-center mb-8 ${
-          isDark ? 'text-gray-200' : 'text-gray-800'
+          isDark ? 'text-white' : 'text-black'
         }`}>Checkout</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Checkout Form */}
           <div className={`rounded-lg shadow p-6 ${
-            isDark ? 'bg-gray-800' : 'bg-white'
+            isDark ? 'bg-black' : 'bg-white'
           }`}>
             <h2 className={`text-xl font-semibold mb-6 ${
-              isDark ? 'text-gray-200' : 'text-gray-800'
+              isDark ? 'text-white' : 'text-black'
             }`}>Shipping Information</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
@@ -126,9 +126,9 @@ const CheckoutPage = () => {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent ${
                       isDark 
-                        ? 'bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400' 
+                        ? 'bg-gray-900 border-gray-800 text-gray-200 placeholder-gray-400' 
                         : 'border-gray-300'
                     }`}
                   />
@@ -143,9 +143,9 @@ const CheckoutPage = () => {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
-                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent ${
                       isDark 
-                        ? 'bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400' 
+                        ? 'bg-gray-900 border-gray-800 text-gray-200 placeholder-gray-400' 
                         : 'border-gray-300'
                     }`}
                   />
@@ -162,9 +162,9 @@ const CheckoutPage = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent ${
                     isDark 
-                      ? 'bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400' 
+                      ? 'bg-gray-900 border-gray-800 text-gray-200 placeholder-gray-400' 
                       : 'border-gray-300'
                   }`}
                 />
@@ -180,9 +180,9 @@ const CheckoutPage = () => {
                   value={formData.phone}
                   onChange={handleInputChange}
                   required
-                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent ${
                     isDark 
-                      ? 'bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400' 
+                      ? 'bg-gray-900 border-gray-800 text-gray-200 placeholder-gray-400' 
                       : 'border-gray-300'
                   }`}
                 />
@@ -198,9 +198,9 @@ const CheckoutPage = () => {
                   value={formData.address}
                   onChange={handleInputChange}
                   required
-                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent ${
                     isDark 
-                      ? 'bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400' 
+                      ? 'bg-gray-900 border-gray-800 text-gray-200 placeholder-gray-400' 
                       : 'border-gray-300'
                   }`}
                 />
@@ -217,9 +217,9 @@ const CheckoutPage = () => {
                     value={formData.city}
                     onChange={handleInputChange}
                     required
-                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent ${
                       isDark 
-                        ? 'bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400' 
+                        ? 'bg-gray-900 border-gray-800 text-gray-200 placeholder-gray-400' 
                         : 'border-gray-300'
                     }`}
                   />
@@ -234,9 +234,9 @@ const CheckoutPage = () => {
                     value={formData.state}
                     onChange={handleInputChange}
                     required
-                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent ${
                       isDark 
-                        ? 'bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400' 
+                        ? 'bg-gray-900 border-gray-800 text-gray-200 placeholder-gray-400' 
                         : 'border-gray-300'
                     }`}
                   />
@@ -251,16 +251,16 @@ const CheckoutPage = () => {
                     value={formData.zipCode}
                     onChange={handleInputChange}
                     required
-                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent ${
                       isDark 
-                        ? 'bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400' 
+                        ? 'bg-gray-900 border-gray-800 text-gray-200 placeholder-gray-400' 
                         : 'border-gray-300'
                     }`}
                   />
                 </div>
               </div>
 
-              <hr className={`my-6 ${isDark ? 'border-gray-600' : 'border-gray-200'}`} />
+              <hr className={`my-6 ${isDark ? 'border-gray-800' : 'border-gray-200'}`} />
               
               <div>
                 <label className={`block text-sm font-medium mb-1 ${
@@ -273,9 +273,9 @@ const CheckoutPage = () => {
                   onChange={handleInputChange}
                   placeholder="1234 5678 9012 3456"
                   required
-                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent ${
                     isDark 
-                      ? 'bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400' 
+                      ? 'bg-gray-900 border-gray-800 text-gray-200 placeholder-gray-400' 
                       : 'border-gray-300'
                   }`}
                 />
@@ -291,9 +291,9 @@ const CheckoutPage = () => {
                   value={formData.cardName}
                   onChange={handleInputChange}
                   required
-                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                  className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent ${
                     isDark 
-                      ? 'bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400' 
+                      ? 'bg-gray-900 border-gray-800 text-gray-200 placeholder-gray-400' 
                       : 'border-gray-300'
                   }`}
                 />
@@ -311,9 +311,9 @@ const CheckoutPage = () => {
                     onChange={handleInputChange}
                     placeholder="MM/YY"
                     required
-                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent ${
                       isDark 
-                        ? 'bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400' 
+                        ? 'bg-gray-900 border-gray-800 text-gray-200 placeholder-gray-400' 
                         : 'border-gray-300'
                     }`}
                   />
@@ -329,9 +329,9 @@ const CheckoutPage = () => {
                     onChange={handleInputChange}
                     placeholder="123"
                     required
-                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                    className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent ${
                       isDark 
-                        ? 'bg-gray-700 border-gray-600 text-gray-200 placeholder-gray-400' 
+                        ? 'bg-gray-900 border-gray-800 text-gray-200 placeholder-gray-400' 
                         : 'border-gray-300'
                     }`}
                   />
@@ -342,10 +342,10 @@ const CheckoutPage = () => {
 
           {/* Order Summary */}
           <div className={`rounded-lg shadow p-6 ${
-            isDark ? 'bg-gray-800' : 'bg-white'
+            isDark ? 'bg-black' : 'bg-white'
           }`}>
             <h2 className={`text-xl font-semibold mb-6 ${
-              isDark ? 'text-gray-200' : 'text-gray-800'
+              isDark ? 'text-white' : 'text-black'
             }`}>Order Summary</h2>
             
             <div className="space-y-4 mb-6">
@@ -382,14 +382,14 @@ const CheckoutPage = () => {
               <hr className="border-gray-200" />
               <div className="flex justify-between text-lg font-bold">
                 <span>Total:</span>
-                <span className="text-blue-600">${finalTotal.toFixed(2)}</span>
+                <span className="text-black">${finalTotal.toFixed(2)}</span>
               </div>
             </div>
             
             <button
               onClick={handleSubmit}
               disabled={loading}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white py-3 px-6 rounded-lg font-medium transition-colors"
+              className="w-full bg-black hover:bg-gray-800 disabled:bg-gray-400 text-white py-3 px-6 rounded-lg font-medium transition-colors"
             >
               {loading ? 'Processing...' : `Place Order - $${finalTotal.toFixed(2)}`}
             </button>

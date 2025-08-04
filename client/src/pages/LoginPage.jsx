@@ -38,37 +38,37 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-lg shadow p-8">
-        <div className="mb-6 text-center">
-          <h2 className="text-2xl font-bold text-gray-800">Login Page</h2>
+    <div className={`min-h-screen flex items-center justify-center bg-gray-100`}>
+      <div className={`max-w-md w-full p-8 rounded-lg shadow-lg bg-white`}>
+        <div className={`mb-6 text-center`}>
+          <h2 className={`text-2xl font-bold mb-6 text-black`}>Sign In</h2>
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-gray-700 mb-1">Email:</label>
+            <label className={`block text-sm font-medium mb-1 text-gray-700`}>Email</label>
             <input
               type="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent bg-white border-gray-300 text-gray-800 placeholder-gray-400`}
               required
             />
           </div>
           <div>
-            <label className="block text-gray-700 mb-1">Password:</label>
+            <label className={`block text-sm font-medium mb-1 text-gray-700`}>Password</label>
             <input
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-black focus:border-transparent bg-white border-gray-300 text-gray-800 placeholder-gray-400`}
               required
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded transition"
+            className="w-full bg-black hover:bg-gray-800 text-white py-3 px-6 rounded-lg font-medium transition-colors"
           >
-            Login
+            Sign In
           </button>
         </form>
         <div className="mt-4 text-center">

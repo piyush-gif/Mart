@@ -23,7 +23,7 @@ const ProductDetail = () => {
 
   if (loading) {
     return (
-      <div className={`min-h-screen flex items-center justify-center ${isDark ? 'bg-gray-900 text-gray-400' : 'bg-gray-100 text-gray-700'}`}>
+      <div className={`min-h-screen flex items-center justify-center ${isDark ? 'bg-black text-gray-300' : 'bg-white text-gray-800'}`}>
         Loading product...
       </div>
     );
@@ -31,7 +31,7 @@ const ProductDetail = () => {
 
   if (error) {
     return (
-      <div className={`min-h-screen flex items-center justify-center text-center px-4 ${isDark ? 'bg-gray-900 text-red-400' : 'bg-gray-100 text-red-600'}`}>
+      <div className={`min-h-screen flex items-center justify-center text-center px-4 ${isDark ? 'bg-black text-gray-400' : 'bg-white text-gray-600'}`}>
         {error.message}
       </div>
     );
@@ -39,14 +39,14 @@ const ProductDetail = () => {
 
   if (!product) {
     return (
-      <div className={`min-h-screen flex items-center justify-center ${isDark ? 'bg-gray-900 text-gray-500' : 'bg-gray-100 text-gray-600'}`}>
+      <div className={`min-h-screen flex items-center justify-center ${isDark ? 'bg-black text-gray-500' : 'bg-white text-gray-600'}`}>
         Product not found.
       </div>
     );
   }
 
   return (
-    <div className={`min-h-screen py-10 px-4 md:px-8 ${isDark ? 'bg-gray-900 text-gray-200' : 'bg-gray-50 text-gray-900'}`}>
+    <div className={`min-h-screen py-10 px-4 md:px-8 ${isDark ? 'bg-black text-gray-100' : 'bg-white text-gray-900'}`}>
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-10">
         {/* Image Section */}
         <div className="w-full md:w-1/2">
@@ -63,18 +63,18 @@ const ProductDetail = () => {
 
           <div className="text-lg space-y-2">
             <p>
-              <span className="font-semibold">Price:</span>{' '}
-              <span className="text-blue-500">${product.price}</span>
+              <span className="text-gray-900 font-semibold">Price:</span>{' '}
+              <span className="text-black">${product.price}</span>
             </p>
             <p>
-              <span className="font-semibold">Category:</span> {product.category}
+              <span className="text-gray-900 font-semibold">Category:</span> {product.category}
             </p>
             <p>
-              <span className="font-semibold">Expiration Date:</span>{' '}
+              <span className="text-gray-900 font-semibold">Expiration Date:</span>{' '}
               {new Date(product.expirationDate).toLocaleDateString()}
             </p>
             <p>
-              <span className="font-semibold">Rating:</span> {product.rating} / 5
+              <span className="text-gray-900 font-semibold">Rating:</span> {product.rating} / 5
             </p>
             <p className="pt-2">
               <span className="font-semibold block">Description:</span>

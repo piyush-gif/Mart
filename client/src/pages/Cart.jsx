@@ -38,16 +38,12 @@ const Cart = () => {
 
   if (!cartItems || cartItems.length === 0) {
     return (
-      <div className={`min-h-screen py-8 ${isDark ? 'bg-gray-900' : 'bg-gray-100'}`}>
+      <div className={`min-h-screen py-8 ${isDark ? 'bg-black' : 'bg-white'}`}>
         <div className={`max-w-2xl mx-auto rounded-lg shadow p-6 text-center ${
-          isDark ? 'bg-gray-800' : 'bg-white'
+          isDark ? 'bg-black' : 'bg-white'
         }`}>
-          <h2 className={`text-2xl font-bold mb-4 ${
-            isDark ? 'text-gray-200' : 'text-gray-800'
-          }`}>Your cart is empty</h2>
-          <p className={`mb-6 ${
-            isDark ? 'text-gray-400' : 'text-gray-600'
-          }`}>Add some items to your cart before checkout.</p>
+          <h2 className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-black'}`}>Your cart is empty</h2>
+          <p className={`mb-6 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Add some items to your cart before checkout.</p>
           <Link
             to="/"
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors"
@@ -60,32 +56,26 @@ const Cart = () => {
   }
 
   return (
-    <div className={`min-h-screen py-8 ${isDark ? 'bg-gray-900' : 'bg-gray-100'}`}>
+    <div className={`min-h-screen py-8 ${isDark ? 'bg-black' : 'bg-white'}`}>
       <div className="max-w-6xl mx-auto px-4">
-        <h1 className={`text-3xl font-bold text-center mb-8 ${
-          isDark ? 'text-gray-200' : 'text-gray-800'
-        }`}>Your Cart</h1>
+        <h1 className={`text-3xl font-bold text-center mb-8 ${isDark ? 'text-white' : 'text-black'}`}>Your Cart</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Checkout Summary - Left Side */}
-          <div className={`rounded-lg shadow p-6 ${
-            isDark ? 'bg-gray-800' : 'bg-white'
-          }`}>
-            <h2 className={`text-xl font-semibold mb-6 ${
-              isDark ? 'text-gray-200' : 'text-gray-800'
-            }`}>Order Summary</h2>
+          <div className={`rounded-lg shadow p-6 ${isDark ? 'bg-black' : 'bg-white'}`}>
+            <h2 className={`text-xl font-semibold mb-6 ${isDark ? 'text-white' : 'text-black'}`}>Order Summary</h2>
             <div className="space-y-2 mb-6">
               <div className="flex justify-between">
                 <span className={isDark ? 'text-gray-400' : 'text-gray-600'}>Subtotal:</span>
-                <span className="font-medium">${total.toFixed(2)}</span>
+                <span className="font-medium text-black">${total.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span className={isDark ? 'text-gray-400' : 'text-gray-600'}>Shipping:</span>
-                <span className="font-medium">$5.99</span>
+                <span className="font-medium text-black">$5.99</span>
               </div>
               <div className="flex justify-between">
                 <span className={isDark ? 'text-gray-400' : 'text-gray-600'}>Tax:</span>
-                <span className="font-medium">${(total * 0.08).toFixed(2)}</span>
+                <span className="font-medium text-black">${(total * 0.08).toFixed(2)}</span>
               </div>
               <hr className={isDark ? 'border-gray-600' : 'border-gray-200'} />
               <div className="flex justify-between text-lg font-bold">
@@ -102,12 +92,8 @@ const Cart = () => {
           </div>
 
           {/* Cart Items - Right Side */}
-          <div className={`rounded-lg shadow p-6 ${
-            isDark ? 'bg-gray-800' : 'bg-white'
-          }`}>
-            <h2 className={`text-xl font-semibold mb-6 ${
-              isDark ? 'text-gray-200' : 'text-gray-800'
-            }`}>Cart Items</h2>
+          <div className={`rounded-lg shadow p-6 ${isDark ? 'bg-black' : 'bg-white'}`}>
+            <h2 className={`text-xl font-semibold mb-6 ${isDark ? 'text-white' : 'text-black'}`}>Cart Items</h2>
             <div className="space-y-4">
               {cartItems.map((item, id) => (
                 <div
