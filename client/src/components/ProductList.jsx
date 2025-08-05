@@ -71,7 +71,11 @@ const ProductList = ({ category }) => {
               <p className="text-sm mb-4 text-gray-500">Rating: {product.rating} / 5</p>
               <button
                 onClick={(e) => handleAddToCart(e, product)}
-                className="mt-auto bg-black hover:bg-gray-800 active:bg-gray-700 text-white px-4 py-2 rounded-md transition w-full text-sm font-medium"
+                className={`mt-auto w-full text-sm font-semibold rounded-lg px-4 py-2 border transition-all duration-200 shadow-sm
+                  ${isDark
+                    ? 'bg-white text-black border-white hover:bg-black hover:text-white hover:border-white active:bg-gray-900'
+                    : 'bg-black text-white border-black hover:bg-white hover:text-black hover:border-black active:bg-gray-200'}
+                `}
                 aria-label={`Add ${product.name} to cart`}
               >
                 Add to Cart

@@ -144,29 +144,45 @@ const HomePage = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {(search ? filteredProducts : oneProductPerCategory).map((product) => (
-            <Link
+            <div
               key={product._id}
-              to={`/products/${product._id}`}
-              className={`rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 p-6 block ${isDark ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'}`}
+              className={`rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col ${isDark ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200'}`}
             >
-              <img
-                src={`http://localhost:5000/images/${product.image}`}
-                alt={product.name}
-                className="w-full h-56 object-cover mb-6 rounded-lg"
-              />
-              <div className="mb-4">
-                <h3 className={`text-xl font-semibold mb-3 ${isDark ? 'text-white' : 'text-black'}`}>
-                  {product.name}
-                </h3>
-                <p className={`text-sm mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                  Category: {product.category}
-                </p>
-                <p className={`text-sm mb-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                  Expires: {new Date(product.expirationDate).toLocaleDateString()}
-                </p>
-                <p className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-black'}`}>${product.price}</p>
-              </div>
-            </Link>
+              <Link
+                to={`/products/${product._id}`}
+                className="block mb-4"
+                tabIndex={-1}
+              >
+                <img
+                  src={`http://localhost:5000/images/${product.image}`}
+                  alt={product.name}
+                  className="w-full h-56 object-cover mb-6 rounded-lg"
+                />
+                <div className="mb-4">
+                  <h3 className={`text-xl font-semibold mb-3 ${isDark ? 'text-white' : 'text-black'}`}>
+                    {product.name}
+                  </h3>
+                  <p className={`text-sm mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                    Category: {product.category}
+                  </p>
+                  <p className={`text-sm mb-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                    Expires: {new Date(product.expirationDate).toLocaleDateString()}
+                  </p>
+                  <p className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-black'}`}>${product.price}</p>
+                </div>
+              </Link>
+              <button
+                onClick={() => addToCartHandle(product)}
+                className={`mt-auto w-full text-base font-semibold rounded-lg px-4 py-2 border transition-all duration-200 shadow-sm
+                  ${isDark
+                    ? 'bg-white text-black border-white hover:bg-black hover:text-white hover:border-white active:bg-gray-900'
+                    : 'bg-black text-white border-black hover:bg-white hover:text-black hover:border-black active:bg-gray-200'}
+                `}
+                aria-label={`Add ${product.name} to cart`}
+              >
+                Add to Cart
+              </button>
+            </div>
           ))}
         </div>
 

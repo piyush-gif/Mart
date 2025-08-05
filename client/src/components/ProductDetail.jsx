@@ -1,13 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
+import { CartContext } from '../contexts/CartContext';
+import { authFetch } from '../utils/authFetch';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const { isDark } = useTheme();
+  const { fetchCartItems } = useContext(CartContext);
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [adding, setAdding] = useState(false);
+  const handleAddToCart = async () => {
+    if (!product) return;
+    setAdding(true);
+    try {
+      const res = await authFetch('http://localhost:5000/add_to_cart', {
+        method: 'POST',
+        body: JSON.stringify(product),
+      });
+      if (!res.ok) throw new Error('Failed to add product to cart');
+      await res.json();
+      fetchCartItems();
+    } catch (err) {
+      // Optionally show error to user
+      console.error('Add to cart error:', err);
+    } finally {
+      setAdding(false);
+    }
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -81,10 +103,26 @@ const ProductDetail = () => {
               {product.description || 'No description available.'}
             </p>
           </div>
+          {/* Add to Cart Button */}
+          <div>
+            <button
+              onClick={handleAddToCart}
+              disabled={adding}
+              className={`mt-6 w-full text-base font-semibold rounded-lg px-4 py-2 border transition-all duration-200 shadow-sm
+                ${isDark
+                  ? 'bg-white text-black border-white hover:bg-black hover:text-white hover:border-white active:bg-gray-900'
+                  : 'bg-black text-white border-black hover:bg-white hover:text-black hover:border-black active:bg-gray-200'}
+                ${adding ? 'opacity-60 cursor-not-allowed' : ''}
+              `}
+              aria-label={`Add ${product.name} to cart`}
+            >
+              {adding ? 'Adding...' : 'Add to Cart'}
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default ProductDetail;
