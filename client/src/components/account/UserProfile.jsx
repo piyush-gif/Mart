@@ -12,7 +12,7 @@ const UserProfile = () => {
     const getUserData = async () => {
       try {
         setLoading(true);
-        const res = await authFetch('http://localhost:5000/user-data');
+        const res = await authFetch('https://mart-070j.onrender.com/user-data');
         if (!res.ok) {
           throw new Error('Failed to fetch user data');
         }

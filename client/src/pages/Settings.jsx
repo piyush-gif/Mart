@@ -40,7 +40,7 @@ const Settings = () => {
 
     setLoading(true);
     try {
-      const response = await authFetch('http://localhost:5000/change-password', {
+      const response = await authFetch('https://mart-070j.onrender.com/change-password', {
         method: 'POST',
         body: JSON.stringify({
           currentPassword: passwordData.currentPassword,
@@ -80,7 +80,7 @@ const Settings = () => {
     if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
       setLoading(true);
       try {
-        const response = await authFetch('http://localhost:5000/delete-account', {
+        const response = await authFetch('https://mart-070j.onrender.com/delete-account', {
           method: 'DELETE'
         });
 

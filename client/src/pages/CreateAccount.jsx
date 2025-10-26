@@ -42,7 +42,7 @@ const CreateAccountPage = () => {
       return;
     }
 
-    fetch('http://localhost:5000/register', {
+    fetch('https://mart-070j.onrender.com/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

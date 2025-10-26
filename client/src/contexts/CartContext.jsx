@@ -9,7 +9,7 @@ export const CartProvider = ({ children }) => {
 
   const fetchCartItems = useCallback(async () => {
     try {
-      const res = await authFetch('http://localhost:5000/get-cart-data');
+      const res = await authFetch('https://mart-070j.onrender.com/get-cart-data');
       if (!res.ok) throw new Error('Failed to fetch cart items');
       const data = await res.json();
       setCartItems(data);

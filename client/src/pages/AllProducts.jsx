@@ -8,12 +8,12 @@ import { useTheme } from '../contexts/ThemeContext';
 const AllProducts = () => {
   const [search, setSearch] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const { data: productData, error } = useFetch('http://localhost:5000/get-data');
+  const { data: productData, error } = useFetch('https://mart-070j.onrender.com/get-data');
   const { fetchCartItems } = useContext(CartContext);
   const { isDark } = useTheme();
 
   const addToCartHandle = (product) => {
-    authFetch('http://localhost:5000/add_to_cart', {
+    authFetch('https://mart-070j.onrender.com/add_to_cart', {
       method: 'POST',
       body: JSON.stringify(product),
     })

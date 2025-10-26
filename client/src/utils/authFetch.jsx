@@ -11,7 +11,7 @@ export const authFetch = async (url, options = {}) => {
   let response = await fetch(url, options);
 
   if (response.status === 401 || response.status === 403) {
-    const refreshRes = await fetch('http://localhost:5000/refresh-token', {
+    const refreshRes = await fetch('https://mart-070j.onrender.com/refresh-token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ refreshToken }),

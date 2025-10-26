@@ -16,7 +16,7 @@ const ProductDetail = () => {
     if (!product) return;
     setAdding(true);
     try {
-      const res = await authFetch('http://localhost:5000/add_to_cart', {
+      const res = await authFetch('https://mart-070j.onrender.com/add_to_cart', {
         method: 'POST',
         body: JSON.stringify(product),
       });
