@@ -5,7 +5,7 @@ import auth from "../middleware/auth.js";
 const router = express.Router();
 
 // GET all products
-router.get("/", auth, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const products = await Product.find();
     res.json(products);
