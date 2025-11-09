@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import { CartContext } from '../contexts/CartContext';
 import { authFetch } from '../utils/authFetch';
-
+import API_URL from "../config";
 const ProductDetail = () => {
   const { id } = useParams();
   const { isDark } = useTheme();
@@ -16,7 +16,7 @@ const ProductDetail = () => {
     if (!product) return;
     setAdding(true);
     try {
-      const res = await authFetch('https://mart-070j.onrender.com/add_to_cart', {
+  const res = await authFetch(`${API_URL}/add_to_cart`, {
         method: 'POST',
         body: JSON.stringify(product),
       });
@@ -33,7 +33,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5000/products/${id}`)
+  fetch(`${API_URL}/products/${id}`)
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch product details');
         return res.json();

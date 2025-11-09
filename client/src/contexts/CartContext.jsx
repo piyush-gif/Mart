@@ -1,6 +1,6 @@
 import  { createContext, useState, useEffect, useCallback } from 'react';
 import { authFetch } from '../utils/authFetch';
-
+import API_URL from "../config";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
@@ -9,7 +9,7 @@ export const CartProvider = ({ children }) => {
 
   const fetchCartItems = useCallback(async () => {
     try {
-      const res = await authFetch('https://mart-070j.onrender.com/get-cart-data');
+  const res = await authFetch(`${API_URL}/get-cart-data`);
       if (!res.ok) throw new Error('Failed to fetch cart items');
       const data = await res.json();
       setCartItems(data);

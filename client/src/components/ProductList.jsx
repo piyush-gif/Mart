@@ -4,16 +4,16 @@ import useFetch from '../hooks/useFetch';
 import { CartContext } from '../contexts/CartContext';
 import { authFetch } from '../utils/authFetch';
 import { useTheme } from '../contexts/ThemeContext';
-
+import API_URL from "../config";
 const ProductList = ({ category }) => {
-  const { data: productData, error, loading } = useFetch('https://mart-070j.onrender.com/get-data');
+  const { data: productData, error, loading } = useFetch(`${API_URL}/get-data`);
   const { fetchCartItems } = useContext(CartContext);
   const { isDark } = useTheme();
 
   const handleAddToCart = async (e, product) => {
     e.preventDefault();
     try {
-      const res = await authFetch('https://mart-070j.onrender.com/add_to_cart', {
+  const res = await authFetch(`${API_URL}/add_to_cart`, {
         method: 'POST',
         body: JSON.stringify(product),
       });

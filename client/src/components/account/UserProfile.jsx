@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { authFetch } from '../../utils/authFetch';
 import { useTheme } from '../../contexts/ThemeContext';
-
+import API_URL from "../../config";
 const UserProfile = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -12,7 +12,7 @@ const UserProfile = () => {
     const getUserData = async () => {
       try {
         setLoading(true);
-        const res = await authFetch('https://mart-070j.onrender.com/user-data');
+  const res = await authFetch(`${API_URL}/user-data`);
         if (!res.ok) {
           throw new Error('Failed to fetch user data');
         }

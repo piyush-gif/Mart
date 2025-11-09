@@ -3,14 +3,14 @@ import { CartContext } from '../contexts/CartContext';
 import { authFetch } from '../utils/authFetch';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
-
+import API_URL from "../config";
 const Cart = () => {
   const { cartItems, fetchCartItems } = useContext(CartContext);
   const [total, setTotal] = useState(0);
   const { isDark } = useTheme();
 
   const itemDeleteHandle = (itemid) => {
-    authFetch(`http://localhost:5000/cart/${itemid}`, {
+  authFetch(`${API_URL}/cart/${itemid}`, {
       method: 'DELETE',
     })
     .then(res => {

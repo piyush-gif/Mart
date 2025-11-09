@@ -3,7 +3,7 @@ import { authFetch } from "../utils/authFetch";
 import UserTable from "./UserTable";
 import ProductForm from "./ProductForm";
 import { useTheme } from "../contexts/ThemeContext";
-
+import API_URL from "../config";
 
 const Admin = () => {
   const [users, setUsers] = useState([]);
@@ -19,7 +19,7 @@ const Admin = () => {
       setLoading(true);
       try {
         // First, check if user is logged in and get their data
-        const userRes = await authFetch("http://localhost:5000/user-data");
+        const userRes = await authFetch(`${API_URL}/user-data`);
         
         if (userRes.status === 401 || userRes.status === 403) {
           setAuthorized(false);
@@ -44,8 +44,8 @@ const Admin = () => {
 
         // If user is admin, fetch admin data
         const [adminUsersRes, productRes] = await Promise.all([
-          authFetch("http://localhost:5000/users"), // Get all users for admin
-          authFetch("http://localhost:5000/products"),
+          authFetch(`${API_URL}/users`), // Get all users for admin
+          authFetch(`${API_URL}/products`),
         ]);
 
         if (!adminUsersRes.ok || !productRes.ok) {

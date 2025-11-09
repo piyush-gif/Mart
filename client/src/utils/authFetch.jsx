@@ -1,3 +1,5 @@
+
+import API_URL from "../config";
 export const authFetch = async (url, options = {}) => {
   let accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
@@ -11,7 +13,7 @@ export const authFetch = async (url, options = {}) => {
   let response = await fetch(url, options);
 
   if (response.status === 401 || response.status === 403) {
-    const refreshRes = await fetch('https://mart-070j.onrender.com/refresh-token', {
+  const refreshRes = await fetch(`${API_URL}/refresh-token`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ refreshToken }),

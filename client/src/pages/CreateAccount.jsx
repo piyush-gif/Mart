@@ -1,7 +1,7 @@
 import  { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { UserPlus } from 'lucide-react';
-
+import API_URL from "../config";
 const CreateAccountPage = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -42,7 +42,7 @@ const CreateAccountPage = () => {
       return;
     }
 
-    fetch('https://mart-070j.onrender.com/register', {
+  fetch(`${API_URL}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -6,11 +6,11 @@ import { CartContext } from '../contexts/CartContext';
 import { authFetch } from '../utils/authFetch';
 import { useTheme } from '../contexts/ThemeContext';
 import { Tag, ShoppingCart, ToyBrick, Shirt, Monitor, Home as HomeIcon } from "lucide-react";
-
+import API_URL from "../config";
 const HomePage = () => {
   const [search, setSearch] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const { data: productData, error } = useFetch('https://mart-070j.onrender.com/get-data');
+  const { data: productData, error } = useFetch(`${API_URL}/get-data`);
   const { fetchCartItems } = useContext(CartContext);
   const { isDark } = useTheme();
 
@@ -23,7 +23,7 @@ const HomePage = () => {
   ];
 
   const addToCartHandle = (product) => {
-    authFetch('https://mart-070j.onrender.com/add_to_cart', {
+  authFetch(`${API_URL}/add_to_cart`, {
       method: 'POST',
       body: JSON.stringify(product),
     })

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { authFetch } from "../utils/authFetch";
 import { useTheme } from "../contexts/ThemeContext";
-
+import API_URL from "../config";
 const UserTable = ({ users, setUsers, setError }) => {
   const [editingId, setEditingId] = useState(null);
   const [editedUser, setEditedUser] = useState({ email: "", role: "" });
@@ -21,7 +21,7 @@ const UserTable = ({ users, setUsers, setError }) => {
     if (!email || !role) return alert("Email and role are required");
 
     try {
-      const res = await authFetch(`http://localhost:5000/users/${editingId}`, {
+      const res = await authFetch(`${API_URL}/users/${editingId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -50,7 +50,7 @@ const UserTable = ({ users, setUsers, setError }) => {
     if (!window.confirm("Delete this user?")) return;
 
     try {
-      const res = await authFetch(`http://localhost:5000/users/${id}`, {
+  const res = await authFetch(`${API_URL}/users/${id}`, {
         method: "DELETE",
       });
 

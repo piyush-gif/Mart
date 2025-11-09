@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { authFetch } from "../utils/authFetch";
 import { useTheme } from "../contexts/ThemeContext";
-
+import API_URL from "../config";
 const ProductForm = ({ products, setProducts, setError }) => {
   const defaultProduct = {
     name: "", price: "", category: "", description: "",
@@ -35,7 +35,7 @@ const ProductForm = ({ products, setProducts, setError }) => {
         expirationDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
       };
 
-      const res = await authFetch("http://localhost:5000/products", {
+  const res = await authFetch(`${API_URL}/products`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(productData),
@@ -74,7 +74,7 @@ const ProductForm = ({ products, setProducts, setError }) => {
         reviewCount: parseInt(editedProduct.reviewCount),
       };
 
-      const res = await authFetch(`http://localhost:5000/products/${editingId}`, {
+  const res = await authFetch(`${API_URL}/products/${editingId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(productData),
@@ -95,7 +95,7 @@ const ProductForm = ({ products, setProducts, setError }) => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this product?")) return;
     try {
-      const res = await authFetch(`http://localhost:5000/products/${id}`, {
+  const res = await authFetch(`${API_URL}/products/${id}`, {
         method: "DELETE",
       });
 

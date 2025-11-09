@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
-
+import API_URL from "../config";
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -12,7 +12,7 @@ const LoginPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('https://mart-070j.onrender.com/login', {
+  const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
