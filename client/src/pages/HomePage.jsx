@@ -154,7 +154,7 @@ const HomePage = () => {
                 tabIndex={-1}
               >
                 <img
-                  src={`http://localhost:5000/images/${product.image}`}
+                  src={`${API_URL}/images/${product.image}`}
                   alt={product.name}
                   className="w-full h-56 object-cover mb-6 rounded-lg"
                 />

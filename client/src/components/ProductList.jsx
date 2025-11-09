@@ -60,7 +60,7 @@ const ProductList = ({ category }) => {
               isDark ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'
             }`}>
               <img
-                src={`http://localhost:5000/images/${product.image}`}
+                src={`${API_URL}/images/${product.image}`}
                 alt={product.name}
                 className="w-full h-48 object-cover rounded-lg mb-4 group-hover:scale-[1.02] transition-transform"
               />

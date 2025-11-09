@@ -186,7 +186,7 @@ const ProductForm = ({ products, setProducts, setError }) => {
                   <div className="space-y-2">
                     {catProducts.map(p => (
                       <div key={p._id} className={`p-3 border rounded ${isDark ? 'border-gray-700 bg-black' : 'border-gray-300 bg-white'}`}>
-                        <img src={`http://localhost:5000/images/${p.image}`} alt={p.name} className="w-full h-32 object-cover mb-2 rounded" />
+                        <img src={`${API_URL}/images/${p.image}`} alt={p.name} className="w-full h-32 object-cover mb-2 rounded" />
                         {editingId === p._id ? (
                           <div className="space-y-2 text-sm">
                             <input type="text" value={editedProduct.name} onChange={(e) => handleChange(setEditedProduct, 'name', e.target.value)} className={`w-full p-1 border rounded ${isDark ? 'bg-gray-900 text-white border-gray-700' : 'bg-white text-black border-gray-300'}`} placeholder="Product name" />

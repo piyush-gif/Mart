@@ -73,7 +73,7 @@ const ProductDetail = () => {
         {/* Image Section */}
         <div className="w-full md:w-1/2">
           <img
-            src={`http://localhost:5000/images/${product.image}`}
+            src={`${API_URL}/images/${product.image}`}
             alt={product.name || 'Product Image'}
             className="rounded-xl shadow-xl object-cover w-full max-h-[500px] transition hover:scale-[1.02]"
           />
